@@ -1,0 +1,9 @@
+/* App-specific local styles */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add custom animations or overrides here if needed */
