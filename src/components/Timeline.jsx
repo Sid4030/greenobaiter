@@ -94,116 +94,124 @@ export default function Timeline() {
                 {step.icon}
               </div>
 
-              {/* Left Column (Content or Empty spacer) */}
-              <div style={{
+              {/* Left Column */}
+              <div className={`timeline-col ${!isLeft ? 'spacer' : ''}`} style={{
                 width: '44%',
-                textAlign: isLeft ? 'right' : 'left',
-                display: isLeft ? 'flex' : 'none',
+                display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-end',
+                textAlign: 'right',
                 gap: '1rem',
-              }} className="timeline-left-col">
-                <span className="badge" style={{
-                  backgroundColor: `${step.color}15`,
-                  color: step.color,
-                  border: `1px solid ${step.color}30`,
-                }}>
-                  {step.badge}
-                </span>
-                
-                <div>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 800, color: step.color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                    {step.phase}
-                  </span>
-                  <h3 style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: 800, 
-                    color: 'var(--primary)', 
-                    fontFamily: 'var(--font-heading)',
-                    marginTop: '0.25rem'
-                  }}>
-                    {step.title}
-                  </h3>
-                </div>
-
-                <div className="glass-panel" style={{
-                  padding: '1.75rem',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(11, 61, 43, 0.06)',
-                  background: 'var(--bg-card)',
-                  boxShadow: '0 8px 30px rgba(11, 61, 43, 0.01)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.75rem',
-                  width: '100%',
-                  textAlign: 'right',
-                }}>
-                  {step.items.map((item, idx) => (
-                    <div key={idx} style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
-                      {item}
+              }}>
+                {isLeft && (
+                  <>
+                    <span className="badge" style={{
+                      backgroundColor: `${step.color}15`,
+                      color: step.color,
+                      border: `1px solid ${step.color}30`,
+                    }}>
+                      {step.badge}
+                    </span>
+                    
+                    <div>
+                      <span style={{ fontSize: '0.8rem', fontWeight: 800, color: step.color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                        {step.phase}
+                      </span>
+                      <h3 style={{ 
+                        fontSize: '1.5rem', 
+                        fontWeight: 800, 
+                        color: 'var(--primary)', 
+                        fontFamily: 'var(--font-heading)',
+                        marginTop: '0.25rem'
+                      }}>
+                        {step.title}
+                      </h3>
                     </div>
-                  ))}
-                </div>
+
+                    <div className="glass-panel" style={{
+                      padding: '1.75rem',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(11, 61, 43, 0.06)',
+                      background: 'var(--bg-card)',
+                      boxShadow: '0 8px 30px rgba(11, 61, 43, 0.01)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.75rem',
+                      width: '100%',
+                      textAlign: 'right',
+                    }}>
+                      {step.items.map((item, idx) => (
+                        <div key={idx} style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
 
-              {/* Right Column (Content or Empty spacer) */}
-              <div style={{
+              {/* Right Column */}
+              <div className={`timeline-col ${isLeft ? 'spacer' : ''}`} style={{
                 width: '44%',
-                textAlign: isLeft ? 'right' : 'left',
-                display: !isLeft ? 'flex' : 'none',
+                display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
+                textAlign: 'left',
                 gap: '1rem',
-              }} className="timeline-right-col">
-                <span className="badge" style={{
-                  backgroundColor: `${step.color}15`,
-                  color: step.color,
-                  border: `1px solid ${step.color}30`,
-                }}>
-                  {step.badge}
-                </span>
-
-                <div>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 800, color: step.color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                    {step.phase}
-                  </span>
-                  <h3 style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: 800, 
-                    color: 'var(--primary)', 
-                    fontFamily: 'var(--font-heading)',
-                    marginTop: '0.25rem'
-                  }}>
-                    {step.title}
-                  </h3>
-                </div>
-
-                <div className="glass-panel" style={{
-                  padding: '1.75rem',
-                  borderRadius: '20px',
-                  border: '1px solid rgba(11, 61, 43, 0.06)',
-                  background: 'var(--bg-card)',
-                  boxShadow: '0 8px 30px rgba(11, 61, 43, 0.01)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.75rem',
-                  width: '100%',
-                  textAlign: 'left',
-                }}>
-                  {step.items.map((item, idx) => (
-                    <div key={idx} style={{ 
-                      fontSize: '0.9rem', 
-                      color: 'var(--text-muted)', 
-                      lineHeight: '1.4',
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '0.5rem',
+              }}>
+                {!isLeft && (
+                  <>
+                    <span className="badge" style={{
+                      backgroundColor: `${step.color}15`,
+                      color: step.color,
+                      border: `1px solid ${step.color}30`,
                     }}>
-                      <CheckCircle size={14} style={{ color: step.color, marginTop: '4px', flexShrink: 0 }} />
-                      <span>{item}</span>
+                      {step.badge}
+                    </span>
+
+                    <div>
+                      <span style={{ fontSize: '0.8rem', fontWeight: 800, color: step.color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                        {step.phase}
+                      </span>
+                      <h3 style={{ 
+                        fontSize: '1.5rem', 
+                        fontWeight: 800, 
+                        color: 'var(--primary)', 
+                        fontFamily: 'var(--font-heading)',
+                        marginTop: '0.25rem'
+                      }}>
+                        {step.title}
+                      </h3>
                     </div>
-                  ))}
-                </div>
+
+                    <div className="glass-panel" style={{
+                      padding: '1.75rem',
+                      borderRadius: '20px',
+                      border: '1px solid rgba(11, 61, 43, 0.06)',
+                      background: 'var(--bg-card)',
+                      boxShadow: '0 8px 30px rgba(11, 61, 43, 0.01)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.75rem',
+                      width: '100%',
+                      textAlign: 'left',
+                    }}>
+                      {step.items.map((item, idx) => (
+                        <div key={idx} style={{ 
+                          fontSize: '0.9rem', 
+                          color: 'var(--text-muted)', 
+                          lineHeight: '1.4',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '0.5rem',
+                        }}>
+                          <CheckCircle size={14} style={{ color: step.color, marginTop: '4px', flexShrink: 0 }} />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
 
             </motion.div>
@@ -227,13 +235,16 @@ export default function Timeline() {
             left: 20px !important;
             transform: translateX(-50%) !important;
           }
-          .timeline-left-col, .timeline-right-col {
+          .spacer {
+            display: none !important;
+          }
+          .timeline-col {
             width: 100% !important;
             display: flex !important;
             align-items: flex-start !important;
             text-align: left !important;
           }
-          .timeline-left-col div {
+          .timeline-col .glass-panel {
             text-align: left !important;
           }
         }

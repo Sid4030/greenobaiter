@@ -34,11 +34,12 @@
   padding: 0;
 }
 
-body {
+html, body {
   font-family: var(--font-body);
   color: var(--text-dark);
   background-color: var(--bg-light);
   overflow-x: hidden;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
@@ -176,4 +177,54 @@ a {
   background-color: rgba(190, 242, 100, 0.15);
   border: 1px solid var(--accent);
   color: var(--primary);
+}
+
+/* CSS Clouds */
+.css-cloud {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 100px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  z-index: 1;
+  pointer-events: none;
+}
+.css-cloud::before, .css-cloud::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+.css-cloud-1 {
+  width: 120px;
+  height: 40px;
+  animation: cloudFloat1 8s ease-in-out infinite;
+}
+.css-cloud-1::before {
+  width: 60px; height: 60px;
+  top: -30px; left: 15px;
+}
+.css-cloud-1::after {
+  width: 50px; height: 50px;
+  top: -20px; right: 15px;
+}
+.css-cloud-2 {
+  width: 160px;
+  height: 50px;
+  animation: cloudFloat2 10s ease-in-out infinite reverse;
+}
+.css-cloud-2::before {
+  width: 80px; height: 80px;
+  top: -40px; left: 20px;
+}
+.css-cloud-2::after {
+  width: 70px; height: 70px;
+  top: -30px; right: 25px;
+}
+@keyframes cloudFloat1 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-15px) translateX(10px); }
+}
+@keyframes cloudFloat2 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(-15px); }
 }

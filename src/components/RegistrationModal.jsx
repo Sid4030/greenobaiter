@@ -53,13 +53,12 @@ export default function RegistrationModal({ isOpen, onClose }) {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'rgba(7, 25, 18, 0.4)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
+              background: 'rgba(7, 25, 18, 0.75)',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={onClose}
           />
 
@@ -78,10 +77,10 @@ export default function RegistrationModal({ isOpen, onClose }) {
               zIndex: 201,
               padding: '2.5rem',
             }}
-            initial={{ scale: 0.9, y: 30, opacity: 0 }}
+            initial={{ scale: 0.95, y: 15, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
-            exit={{ scale: 0.9, y: 30, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 220 }}
+            exit={{ scale: 0.95, y: 15, opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
             {/* Close Button */}
             <button

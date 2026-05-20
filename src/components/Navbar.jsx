@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll } from 'framer-motion';
-import { Leaf, Award, Menu, X } from 'lucide-react';
+import { Leaf, Award, Menu, X, HelpCircle, PhoneCall, Users, BookOpen } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar({ onRegisterClick }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
   const { scrollYProgress } = useScroll();
   
   // Track scroll position to change background transparency
@@ -20,10 +22,16 @@ export default function Navbar({ onRegisterClick }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const themeColor = isScrolled ? 'var(--primary)' : '#ffffff';
-  const mutedThemeColor = isScrolled ? 'var(--text-muted)' : 'rgba(255, 255, 255, 0.65)';
-  const navBg = isScrolled ? 'rgba(251, 251, 249, 0.92)' : 'rgba(5, 26, 18, 0.3)';
-  const borderBg = isScrolled ? 'rgba(11, 61, 43, 0.08)' : 'rgba(255, 255, 255, 0.06)';
+  // Close mobile drawer when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Determine colors based on scroll state
+  const themeColor = 'var(--primary)';
+  const mutedThemeColor = 'var(--text-muted)';
+  const navBg = isScrolled ? 'rgba(251, 251, 249, 0.98)' : 'rgba(251, 251, 249, 0.5)';
+  const borderBg = isScrolled ? 'rgba(11, 61, 43, 0.08)' : 'transparent';
 
   return (
     <>
@@ -65,42 +73,48 @@ export default function Navbar({ onRegisterClick }) {
           alignItems: 'center', 
           height: '75px' 
         }}>
-          {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: 800, fontSize: '1.25rem', color: themeColor, fontFamily: 'var(--font-heading)' }}>
-            <motion.div
-              animate={{ rotate: [0, 8, 0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            >
-              <Leaf size={28} style={{ color: 'var(--secondary)' }} />
-            </motion.div>
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-              <span>GREENOVATORS</span>
-              <span style={{ fontSize: '0.65rem', fontWeight: 500, letterSpacing: '0.15em', color: mutedThemeColor }}>HACKATHON 2026</span>
-            </div>
-          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 3vw, 1.5rem)' }}>
+            {/* Amity Logo */}
+            <img src="/amity_logo.png" alt="Amity University Logo" style={{ height: 'clamp(28px, 6vw, 46px)', width: 'auto' }} />
+            
+            {/* Greenovators Logo */}
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem, 1.5vw, 0.75rem)', fontWeight: 800, fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: themeColor, fontFamily: 'var(--font-heading)', textDecoration: 'none' }}>
+              <motion.div
+                animate={{ rotate: [0, 8, 0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              >
+                <Leaf size={24} style={{ color: 'var(--secondary)' }} className="nav-leaf-icon" />
+              </motion.div>
+              <div className="nav-logo-text" style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+                <span>GREENOVATORS</span>
+                <span style={{ fontSize: 'clamp(0.5rem, 1.5vw, 0.65rem)', fontWeight: 500, letterSpacing: '0.15em', color: mutedThemeColor }}>HACKATHON 2026</span>
+              </div>
+            </Link>
+          </div>
 
           {/* Navigation Links - Desktop */}
           <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
-            <a href="#about" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor }}>About</a>
-            <a href="#themes" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor }}>Themes</a>
-            <a href="#objectives" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor }}>Objectives</a>
-            <a href="#timeline" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor }}>Timeline</a>
-            <a href="#prizes" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.25rem', color: themeColor }}>
-              <Award size={16} style={{ color: 'var(--secondary)' }} /> Prizes
-            </a>
+            <Link to="/" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Home</Link>
+            <Link to="/about" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>About</Link>
+            <Link to="/problem-statement" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Problem Statement</Link>
+            <Link to="/contributors" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Contributors</Link>
+            <Link to="/faqs" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>FAQs</Link>
+            <Link to="/contact" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Contact</Link>
           </div>
 
           {/* Action Button - Desktop */}
-          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            
             <button 
               className="btn-primary" 
               onClick={onRegisterClick}
               style={{ 
                 padding: '0.55rem 1.4rem', 
                 fontSize: '0.85rem',
-                backgroundColor: isScrolled ? 'var(--primary)' : 'var(--accent)',
-                color: isScrolled ? '#ffffff' : 'var(--primary)',
-                boxShadow: 'none'
+                backgroundColor: 'var(--primary)',
+                color: '#ffffff',
+                boxShadow: 'none',
+                cursor: 'pointer'
               }}
             >
               Register Now
@@ -147,20 +161,19 @@ export default function Navbar({ onRegisterClick }) {
         animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -20 }}
         transition={{ duration: 0.3 }}
       >
-        <a href="#about" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff' }}>About</a>
-        <a href="#themes" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff' }}>Themes</a>
-        <a href="#objectives" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff' }}>Objectives</a>
-        <a href="#timeline" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff' }}>Timeline</a>
-        <a href="#prizes" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ffffff' }}>
-          <Award size={20} style={{ color: 'var(--secondary)' }} /> Prizes
-        </a>
+        <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Home</Link>
+        <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>About</Link>
+        <Link to="/problem-statement" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Problem Statement</Link>
+        <Link to="/contributors" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Contributors</Link>
+        <Link to="/faqs" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>FAQs</Link>
+        <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Contact</Link>
         <button 
           className="btn-primary" 
           onClick={() => {
             setIsMobileMenuOpen(false);
             onRegisterClick();
           }}
-          style={{ width: '80%', textAlign: 'center', justifyContent: 'center', backgroundColor: 'var(--accent)', color: 'var(--primary)' }}
+          style={{ width: '80%', textAlign: 'center', justifyContent: 'center', backgroundColor: 'var(--accent)', color: 'var(--primary)', cursor: 'pointer' }}
         >
           Register Now
         </button>
@@ -170,30 +183,24 @@ export default function Navbar({ onRegisterClick }) {
       <style dangerouslySetInnerHTML={{__html: `
         .nav-link {
           position: relative;
-          transition: color 0.3s ease;
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+          display: inline-block;
         }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          transform: scaleX(0);
-          height: 2px;
-          bottom: -4px;
-          left: 0;
-          background-color: var(--secondary);
-          transform-origin: bottom right;
-          transition: transform 0.25s ease-out;
+        .nav-link:hover {
+          transform: translateY(-4px);
+          color: var(--secondary) !important;
         }
-        .nav-link:hover::after {
-          transform: scaleX(1);
-          transform-origin: bottom left;
-        }
-        @media (max-width: 992px) {
+        @media (max-width: 1150px) {
           .desktop-nav {
             display: none !important;
           }
           .mobile-toggle {
             display: block !important;
+          }
+        }
+        @media (max-width: 440px) {
+          .nav-logo-text {
+            display: none !important;
           }
         }
       `}} />
