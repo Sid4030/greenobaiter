@@ -15,6 +15,8 @@ import {
     Crown,
 } from "lucide-react";
 
+// No Google API needed anymore - simple file upload!
+
 export default function RegistrationModal({ isOpen, onClose }) {
     const [formData, setFormData] = useState({
         teamName: "",
@@ -30,7 +32,8 @@ export default function RegistrationModal({ isOpen, onClose }) {
                 isLeader: true,
             },
         ],
-        documentation: "",
+        documentationLink: "",
+        documentationName: "",
         declarationAccepted: false,
         brief: "",
     });
@@ -129,11 +132,21 @@ export default function RegistrationModal({ isOpen, onClose }) {
         setIsSubmitting(true);
 
         const WEB_APP_URL =
-            "https://script.google.com/macros/s/AKfycbxerq4mBE4fBJF66YYJY0VONstRFc8e3biz6n6sIONiaZgiSAqeEAxQtfe33mh9jN__/exec";
+            "https://script.google.com/macros/s/AKfycbxseztDfwRjTlFnRHOs6jSJDJFdXA4nsZS90rn21hb8QLBEtB90V5jVgAfZ8N3oCQ/exec";
+
+        const form = new FormData();
+        form.append("teamName", formData.teamName);
+        form.append("track", formData.track);
+        form.append("teamSize", formData.teamSize);
+        form.append("members", JSON.stringify(formData.members));
+        form.append("brief", formData.brief);
+        form.append("declarationAccepted", formData.declarationAccepted);
+        form.append("documentationLink", formData.documentationLink);
+        form.append("documentationName", formData.documentationName);
 
         fetch(WEB_APP_URL, {
             method: "POST",
-            body: JSON.stringify(formData),
+            body: form,
         })
             .then((response) => response.json())
             .then((data) => {
@@ -152,6 +165,23 @@ export default function RegistrationModal({ isOpen, onClose }) {
             });
     };
 
+    // Handle file selection
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            // Read file as Base64
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setFormData({
+                    ...formData,
+                    documentationName: file.name,
+                    documentationLink: event.target.result, // Base64 encoded file
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const handleReset = () => {
         setFormData({
             teamName: "",
@@ -167,7 +197,8 @@ export default function RegistrationModal({ isOpen, onClose }) {
                     isLeader: true,
                 },
             ],
-            documentation: "",
+            documentationLink: "",
+            documentationName: "",
             declarationAccepted: false,
             brief: "",
         });
@@ -721,7 +752,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
                                                                                         .value,
                                                                                 )
                                                                             }
-                                                                            placeholder="University/Institute name"
+                                                                            placeholder="Institute Name/Startup"
                                                                             className="form-input"
                                                                         />
                                                                     </div>
@@ -913,7 +944,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
                                                 </div>
                                             </div>
 
-                                            {/* Supplementary Documentation */}
+                                            {/* Supplementary Documentation - Google Drive Link */}
                                             <div
                                                 style={{
                                                     display: "flex",
@@ -931,62 +962,67 @@ export default function RegistrationModal({ isOpen, onClose }) {
                                                         letterSpacing: "0.05em",
                                                     }}
                                                 >
-                                                    Supplementary Documentation
-                                                    (Optional)
+                                                    Upload Documentation -
+                                                    Optional
                                                 </label>
-                                                <div className="input-wrapper">
-                                                    <FileText
-                                                        size={16}
-                                                        className="input-icon"
-                                                    />
-                                                    <select
-                                                        value={
-                                                            formData.documentation
+                                                <label
+                                                    style={{
+                                                        padding: "0.75rem 1rem",
+                                                        borderRadius: "10px",
+                                                        border: "2px dashed var(--primary)",
+                                                        background:
+                                                            "rgba(11, 61, 43, 0.05)",
+                                                        color: "var(--primary)",
+                                                        fontWeight: 600,
+                                                        cursor: "pointer",
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent:
+                                                            "center",
+                                                        gap: "0.5rem",
+                                                        fontSize: "0.9rem",
+                                                        transition: "all 0.2s",
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.background =
+                                                            "rgba(11, 61, 43, 0.1)";
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.background =
+                                                            "rgba(11, 61, 43, 0.05)";
+                                                    }}
+                                                >
+                                                    <input
+                                                        type="file"
+                                                        onChange={
+                                                            handleFileChange
                                                         }
-                                                        onChange={(e) =>
-                                                            setFormData({
-                                                                ...formData,
-                                                                documentation:
-                                                                    e.target
-                                                                        .value,
-                                                            })
-                                                        }
-                                                        className="form-input"
+                                                        accept=".pdf,.doc,.docx,.txt,.xlsx"
                                                         style={{
-                                                            appearance: "none",
-                                                            cursor: "pointer",
+                                                            display: "none",
+                                                        }}
+                                                    />
+                                                    <FileText size={18} />
+                                                    {formData.documentationName
+                                                        ? `✓ ${formData.documentationName}`
+                                                        : "📁 Choose File"}
+                                                </label>
+                                                {formData.documentationName && (
+                                                    <div
+                                                        style={{
+                                                            fontSize: "0.75rem",
+                                                            color: "var(--secondary)",
+                                                            fontWeight: 600,
+                                                            marginTop:
+                                                                "0.25rem",
                                                         }}
                                                     >
-                                                        <option value="">
-                                                            -- Select
-                                                            Documentation Type
-                                                            --
-                                                        </option>
-                                                        <option value="project-proposal">
-                                                            Project Proposal
-                                                            (PDF)
-                                                        </option>
-                                                        <option value="technical-specs">
-                                                            Technical
-                                                            Specifications (PDF)
-                                                        </option>
-                                                        <option value="business-plan">
-                                                            Business Plan (PDF)
-                                                        </option>
-                                                        <option value="prototype-images">
-                                                            Prototype
-                                                            Images/Screenshots
-                                                            (PDF)
-                                                        </option>
-                                                        <option value="research-paper">
-                                                            Research Paper (PDF)
-                                                        </option>
-                                                        <option value="other">
-                                                            Other Documentation
-                                                            (PDF)
-                                                        </option>
-                                                    </select>
-                                                </div>
+                                                        ✓ File linked:{" "}
+                                                        {
+                                                            formData.documentationName
+                                                        }
+                                                    </div>
+                                                )}
                                             </div>
 
                                             {/* Declaration */}
