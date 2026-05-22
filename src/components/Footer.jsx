@@ -7,11 +7,10 @@ export default function Footer() {
     <footer style={{
       background: 'linear-gradient(180deg, #0b3d2b 0%, #071912 100%)',
       color: 'white',
-      padding: '5rem 0 0', /* Removed bottom padding to fit large text */
+      padding: '5rem 0 3rem',
       marginTop: 'auto',
       position: 'relative',
-      zIndex: 2,
-      overflow: 'hidden'
+      zIndex: 2
     }}>
       <div className="container">
         
@@ -20,16 +19,16 @@ export default function Footer() {
           background: 'rgba(255, 255, 255, 0.03)',
           border: '1px solid rgba(255, 255, 255, 0.08)',
           borderRadius: '24px',
-          padding: 'clamp(2rem, 5vw, 4rem)',
+          padding: '4rem',
           textAlign: 'center',
-          marginBottom: 'clamp(3rem, 8vw, 5rem)',
+          marginBottom: '5rem',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: '1.5rem'
         }}>
           <h2 style={{
-            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+            fontSize: '3.5rem',
             fontFamily: 'var(--font-heading)',
             fontWeight: 900,
             lineHeight: 1.1,
@@ -37,11 +36,7 @@ export default function Footer() {
           }}>
             Ready to shape the future?
           </h2>
-          <p style={{ 
-            color: 'rgba(255, 255, 255, 0.7)', 
-            fontSize: 'clamp(1rem, 2vw, 1.1rem)', 
-            maxWidth: '600px'
-          }}>
+          <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '1.1rem', maxWidth: '600px' }}>
             Join the Greenovators Hackathon to access parallel networking, incubation resources, and premium sustainable toolkits.
           </p>
           <Link to="/contact" className="btn-primary" style={{
@@ -51,17 +46,22 @@ export default function Footer() {
             fontSize: '1.1rem',
             marginTop: '1rem',
             borderRadius: '12px',
-            textDecoration: 'none',
-            whiteSpace: 'nowrap'
+            textDecoration: 'none'
           }}>
             Get In Touch
           </Link>
         </div>
 
-        <div className="footer-grid">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1.4fr 1fr 1fr',
+          gap: '4rem',
+          textAlign: 'left',
+          marginBottom: '4rem'
+        }} className="footer-grid">
           
           {/* Brand column */}
-          <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.35rem', color: 'white', fontFamily: 'var(--font-heading)', textDecoration: 'none' }}>
               <Leaf size={28} style={{ color: 'var(--accent)' }} />
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
@@ -69,17 +69,12 @@ export default function Footer() {
                 <span style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em', color: 'rgba(255,255,255,0.5)' }}>HACKATHON 2026</span>
               </div>
             </Link>
-            <p style={{ 
-              color: 'rgba(255, 255, 255, 0.6)', 
-              fontSize: '0.85rem', 
-              lineHeight: '1.5', 
-              maxWidth: '340px'
-            }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.85rem', lineHeight: '1.5', maxWidth: '340px' }}>
               Empowering the future generation of clean-technology innovators in waste streams, climate resilience, and smart logistics.
             </p>
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
               {["#WasteToWealth", "#SmartInfrastructure", "#NetZeroAI"].map((tag, i) => (
-                <span key={i} style={{ fontSize: '0.65rem', color: 'var(--accent)', background: 'rgba(255,255,255,0.06)', padding: '0.2rem 0.5rem', borderRadius: '100px', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                <span key={i} style={{ fontSize: '0.65rem', color: 'var(--accent)', background: 'rgba(255,255,255,0.06)', padding: '0.2rem 0.5rem', borderRadius: '100px', fontWeight: 600 }}>
                   {tag}
                 </span>
               ))}
@@ -87,30 +82,29 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h4 style={{ color: 'white', fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Platform
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)' }} className="footer-links">
               <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
               <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>
-              <Link to="/problem-statement" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Problem Statement</Link>
+              <Link to="/problem-statement" style={{ color: 'inherit', textDecoration: 'none' }}>Problem Statement</Link>
               <Link to="/contributors" style={{ color: 'inherit', textDecoration: 'none' }}>Contributors</Link>
               <Link to="/faqs" style={{ color: 'inherit', textDecoration: 'none' }}>FAQs</Link>
             </div>
           </div>
 
           {/* Address */}
-          <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h4 style={{ color: 'white', fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Organising Host
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.6)' }}>
               <strong style={{ color: 'white' }}>Amity Institute of Environmental Sciences</strong>
               <p>Amity University Uttar Pradesh, Sector-125, Noida, India.</p>
-              <div style={{ marginTop: '0.25rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                <span>📧 Email: <a href="mailto:greenovators2026@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>greenovators2026@gmail.com</a></span>
-                <span>📞 Support: <a href="tel:9882314580" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>9882314580</a> / <a href="tel:9410893552" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>9410893552</a></span>
+              <div style={{ marginTop: '0.25rem', display: 'flex', flexDirection: 'column', gap: '0.15rem' }}>
+                <span>📧 Email: aies@amity.edu</span>
                 <span>🌐 Portal: amity.edu/aies</span>
               </div>
             </div>
@@ -118,55 +112,24 @@ export default function Footer() {
 
         </div>
 
-        <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)', marginBottom: '1.5rem' }} />
+        <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)', marginBottom: '2rem' }} />
 
         {/* Credits */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
           fontSize: '0.75rem',
           color: 'rgba(255, 255, 255, 0.4)',
         }} className="footer-bottom">
-          <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>© 2026 Amity Institute of Environmental Sciences. All rights reserved.</span>
-          <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Contact Us</Link>
-            <a href="#" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Terms of Sprint</a>
+          <span>© 2026 Amity Institute of Environmental Sciences. All rights reserved.</span>
+          <div style={{ display: 'flex', gap: '1.25rem' }}>
+            <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact Us</Link>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Sprint</a>
           </div>
         </div>
 
       </div>
-
-      {/* Huge GREENOVATORS at the bottom */}
-      <div style={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        marginTop: '2rem',
-        paddingTop: '2rem',
-        overflow: 'hidden'
-      }}>
-        <h1 style={{
-          fontSize: 'clamp(2rem, 7.6vw, 12rem)',
-          fontWeight: 900,
-          fontFamily: 'var(--font-heading)',
-          color: 'rgba(255, 255, 255, 0.03)',
-          margin: 0,
-          lineHeight: 0.75,
-          letterSpacing: '-0.02em',
-          userSelect: 'none',
-          whiteSpace: 'nowrap',
-          position: 'relative',
-          bottom: '-10px',
-          textAlign: 'center'
-        }}>
-          GREENOVATORS
-        </h1>
-      </div>
     </footer>
   );
 }
-

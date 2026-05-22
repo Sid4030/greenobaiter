@@ -14,8 +14,9 @@ import {
     MapPin,
     Crown,
 } from "lucide-react";
+import { sendRegistrationToDiscord } from "../utils/discordWebhook";
 
-// No Google API needed anymore - simple file upload!
+// Simple file upload with Discord integration
 
 export default function RegistrationModal({ isOpen, onClose }) {
     const [formData, setFormData] = useState({
@@ -132,7 +133,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
         setIsSubmitting(true);
 
         const WEB_APP_URL =
-            "https://script.google.com/macros/s/AKfycbxseztDfwRjTlFnRHOs6jSJDJFdXA4nsZS90rn21hb8QLBEtB90V5jVgAfZ8N3oCQ/exec";
+            "https://script.google.com/macros/s/AKfycbxgUnBNWyELV5gMgRrrhYtyfYkVNj5OWsL0oWpRt_YKMchBc3veH4XJk0hGiCKD0pBX/exec";
 
         const form = new FormData();
         form.append("teamName", formData.teamName);
@@ -151,6 +152,18 @@ export default function RegistrationModal({ isOpen, onClose }) {
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
+                    // Send to Discord after successful submission
+                    sendRegistrationToDiscord({
+                        teamId: data.teamId,
+                        teamName: formData.teamName,
+                        track: formData.track,
+                        teamSize: formData.teamSize,
+                        members: formData.members,
+                        brief: formData.brief,
+                        documentationName: formData.documentationName,
+                        documentationLink: formData.documentationLink,
+                    });
+
                     setIsSubmitting(false);
                     setIsSubmitted(true);
                 } else {
@@ -169,6 +182,29 @@ export default function RegistrationModal({ isOpen, onClose }) {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
+            // Check file size (max 5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                alert("File size exceeds 5MB. Please choose a smaller file.");
+                return;
+            }
+
+            // Check file type
+            const validTypes = [
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "text/plain",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "application/vnd.ms-excel",
+            ];
+            if (!validTypes.includes(file.type)) {
+                alert(
+                    "Invalid file type. Please upload PDF, DOC, DOCX, TXT, or XLS files.",
+                );
+                return;
+            }
+
             // Read file as Base64
             const reader = new FileReader();
             reader.onload = (event) => {

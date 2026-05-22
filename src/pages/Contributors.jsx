@@ -70,16 +70,14 @@ export default function Contributors() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            fontSize: 'clamp(2rem, 8vw, 3.75rem)',
+            fontSize: '3.75rem',
             color: 'var(--primary)',
             fontFamily: 'var(--font-heading)',
             fontWeight: 900,
             letterSpacing: '-0.04em',
             lineHeight: 1.1,
             maxWidth: '900px',
-            margin: '0 auto 1.5rem',
-            wordBreak: 'keep-all',
-            overflowWrap: 'normal'
+            margin: '0 auto 1.5rem'
           }}
         >
           Contributors
@@ -134,8 +132,8 @@ export default function Contributors() {
               className="contributor-card"
             >
               <div style={{
-                width: '220px',
-                height: '280px',
+                width: '100%',
+                height: '240px',
                 borderRadius: '16px',
                 overflow: 'hidden',
                 background: 'var(--bg-light)',
@@ -144,7 +142,7 @@ export default function Contributors() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 color: 'var(--secondary)',
-                margin: '0 auto 0.5rem'
+                marginBottom: '0.5rem'
               }}>
                 {member.image ? (
                   <img 
@@ -154,7 +152,7 @@ export default function Contributors() {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      objectPosition: 'center top'
+                      objectPosition: 'center'
                     }}
                   />
                 ) : (
