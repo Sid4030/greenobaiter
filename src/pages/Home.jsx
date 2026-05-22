@@ -420,10 +420,30 @@ export default function Home() {
             
             {/* 3D Model Clouds */}
             <div style={{ position: 'absolute', top: '-10px', left: '15%', opacity: 0.8, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-1">
-              <Cloud3DCanvas scale={1.2} />
+              <motion.div
+                animate={{ x: [-20, 20], y: [-6, 6] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 8,
+                  ease: "easeInOut"
+                }}
+              >
+                <Cloud3DCanvas scale={1.2} />
+              </motion.div>
             </div>
             <div style={{ position: 'absolute', top: '20px', right: '10%', opacity: 0.9, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-2">
-              <Cloud3DCanvas scale={0.9} />
+              <motion.div
+                animate={{ x: [20, -20], y: [6, -6] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 9,
+                  ease: "easeInOut"
+                }}
+              >
+                <Cloud3DCanvas scale={0.9} />
+              </motion.div>
             </div>
 
             <span className="badge badge-outline" style={{ position: 'relative', zIndex: 2, background: 'rgba(255,255,255,0.8)' }}>

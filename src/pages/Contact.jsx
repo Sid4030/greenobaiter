@@ -45,20 +45,22 @@ export default function Contact() {
         </span>
         
         <h1 style={{
-          fontSize: '3.75rem',
+          fontSize: 'clamp(1.85rem, 7.5vw, 3.75rem)',
           color: 'var(--primary)',
           fontFamily: 'var(--font-heading)',
           fontWeight: 900,
           letterSpacing: '-0.04em',
           lineHeight: 1.1,
           maxWidth: '900px',
-          margin: '0 auto 1.5rem'
+          margin: '0 auto 1.5rem',
+          wordBreak: 'keep-all',
+          overflowWrap: 'normal'
         }}>
           Let's Start a <span style={{ color: 'var(--secondary)' }}>Sustainable Conversation</span>
         </h1>
 
         <p style={{
-          fontSize: '1.25rem',
+          fontSize: 'clamp(1rem, 4vw, 1.25rem)',
           color: 'var(--text-muted)',
           lineHeight: '1.6',
           maxWidth: '650px',
@@ -83,9 +85,11 @@ export default function Contact() {
             background: '#ffffff',
             border: '1px solid rgba(11, 61, 43, 0.06)',
             borderRadius: '28px',
-            padding: '3rem',
+            padding: 'clamp(1.5rem, 5vw, 3rem)',
             boxShadow: '0 4px 30px rgba(0,0,0,0.01)',
-            position: 'relative'
+            position: 'relative',
+            width: '100%',
+            overflow: 'hidden'
           }}>
             <AnimatePresence>
               {isSubmitted ? (
@@ -269,7 +273,7 @@ export default function Contact() {
               <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
                 Coordinating Host
               </span>
-              <h3 style={{ fontSize: '1.65rem', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
+              <h3 style={{ fontSize: 'clamp(1.35rem, 5vw, 1.65rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
                 Amity Institute of Environmental Sciences
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>
@@ -297,11 +301,13 @@ export default function Contact() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
                   <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Email Address</span>
-                  <strong style={{ fontSize: '0.95rem', color: 'var(--primary)' }}>aies@amity.edu</strong>
+                  <a href="mailto:greenovators2026@gmail.com" style={{ fontSize: '0.95rem', color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }} className="contact-link">
+                    greenovators2026@gmail.com
+                  </a>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <div style={{
                   width: '42px',
                   height: '42px',
@@ -310,13 +316,27 @@ export default function Contact() {
                   color: '#0284c7',
                   display: 'grid',
                   placeItems: 'center',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  marginTop: '2px'
                 }}>
                   <Phone size={18} />
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Contact Support</span>
-                  <strong style={{ fontSize: '0.95rem', color: 'var(--primary)' }}>+91 (0) 120 4392604</strong>
+                <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.3' }}>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Contact Support</span>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--primary)' }}>
+                      <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Ananya Padhy:</span>{' '}
+                      <a href="tel:9882314580" style={{ fontWeight: 700, color: 'inherit', textDecoration: 'none' }} className="contact-link">
+                        9882314580
+                      </a>
+                    </div>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--primary)' }}>
+                      <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Jashn Kulshrestha:</span>{' '}
+                      <a href="tel:9410893552" style={{ fontWeight: 700, color: 'inherit', textDecoration: 'none' }} className="contact-link">
+                        9410893552
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -369,11 +389,26 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Styled inputs focus states */}
+      {/* Styled inputs focus states and responsive grid */}
       <style dangerouslySetInnerHTML={{__html: `
         .contact-field:focus {
           border-color: var(--secondary) !important;
           background: #ffffff !important;
+        }
+        .contact-link:hover {
+          color: var(--secondary) !important;
+          text-decoration: underline !important;
+        }
+        @media (max-width: 900px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-field {
+            font-size: 16px !important; /* Prevents iOS auto-zoom */
+          }
         }
       `}} />
 
