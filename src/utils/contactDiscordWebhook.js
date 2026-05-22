@@ -2,8 +2,8 @@
 // CONTACT FORM DISCORD WEBHOOK INTEGRATION
 // ============================================
 
-const CONTACT_DISCORD_WEBHOOK_URL =
-    "https://discord.com/api/webhooks/1507270246103515136/ta2_Lrw4qFBqzepKj1pJcVvhOOM3Rc81eWxZsK-cqzFoQC-wqYP6KQIeasehZ8wo6V8C";
+const CONTACT_DISCORD_WEBHOOK_URL = import.meta.env
+    .VITE_CONTACT_DISCORD_WEBHOOK_URL;
 
 /**
  * Send contact form data to Discord webhook

@@ -1,6 +1,6 @@
 // Discord Webhook Utility
-const DISCORD_WEBHOOK_URL =
-    "https://discord.com/api/webhooks/1507262716627390525/ggKxgMlEPI0Aprss4TWevSZno_SLjMaNgZWl2KBGgvQIjA1kjHLBswnRXe2rirn3eMJl";
+const DISCORD_WEBHOOK_URL = import.meta.env
+    .VITE_REGISTRATION_DISCORD_WEBHOOK_URL;
 
 export async function sendRegistrationToDiscord(registrationData) {
     try {
