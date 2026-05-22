@@ -340,24 +340,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '10px',
-                  backgroundColor: 'rgba(139, 92, 246, 0.08)',
-                  color: '#8b5cf6',
-                  display: 'grid',
-                  placeItems: 'center',
-                  flexShrink: 0
-                }}>
-                  <Globe size={18} />
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>Institutional Portal</span>
-                  <strong style={{ fontSize: '0.95rem', color: 'var(--primary)' }}>amity.edu/aies</strong>
-                </div>
-              </div>
+              
 
             </div>
 

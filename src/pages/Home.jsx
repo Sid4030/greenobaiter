@@ -271,7 +271,7 @@ export default function Home() {
           animation: 'marquee 28s linear infinite',
           willChange: 'transform'
         }} className="marquee-content">
-          {Array(4).fill("Innovate Green. Build Smart. Impact Tomorrow. •").map((text, idx) => (
+          {Array(4).fill("Innovate Green. Build Smart. Impact Tomorrow.").map((text, idx) => (
             <span key={idx} style={{
               fontSize: '1.15rem',
               fontWeight: 800,
@@ -594,7 +594,7 @@ export default function Home() {
                 display: 'block',
                 marginBottom: '1.25rem'
               }}>
-                ₹ 1,00,000
+                ₹ 2,00,000 *
               </strong>
 
               <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.95rem', lineHeight: '1.5', marginBottom: '1.25rem' }}>

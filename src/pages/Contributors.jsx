@@ -11,42 +11,90 @@ const fadeUp = {
 
 export default function Contributors() {
   
-  const contributors = [
+  const sections = [
     {
-      name: "Prof. Dr. Renu Dhupper",
-      role: "Assistant Director",
-      dept: "Amity Institute of Environmental Sciences, Amity University Uttar Pradesh, Noida",
-      image: "/renu_dhupper.png"
+      title: "Chief Patron",
+      members: [
+        {
+          name: "Dr. Ashok K. Chauhan",
+          role: "",
+          dept: "",
+          image: null
+        }
+      ]
     },
     {
-      name: "Prof. Dr. Rachana Singh",
-      role: "Contributor",
-      dept: "Amity Institute of Biotechnology, Amity University Uttar Pradesh, Noida",
-      image: null
+      title: "Patrons",
+      members: [
+        {
+          name: "Dr. Atul Chauhan",
+          role: "Chancellor",
+          dept: "Amity University",
+          image: null
+        },
+        {
+          name: "Prof. (Dr.) Balvinder Shukla",
+          role: "Vice Chancellor",
+          dept: "Amity University Uttar Pradesh",
+          image: null
+        }
+      ]
     },
     {
-      name: "Dr. Garima Agarwal",
-      role: "Associate Professor and Head",
-      dept: "Amity Centre for Entrepreneurship Development, Amity University Uttar Pradesh, Noida",
-      image: null
+      title: "Co-Patrons",
+      members: [
+        {
+          name: "Prof. (Dr.) Sanjeev Bansal",
+          role: "Additional Pro Vice-Chancellor, Dean FMS & Director ABS",
+          dept: "Amity University Uttar Pradesh, Noida",
+          image: null
+        },
+        {
+          name: "Prof. (Dr.) Chanderdeep Tandon",
+          role: "Additional Pro Vice Chancellor & Dean Faculty of Bio Sciences & Biotechnology",
+          dept: "Amity University Uttar Pradesh, Noida",
+          image: null
+        },
+        {
+          name: "Prof. (Dr.) D. K. Bandyopadhyay",
+          role: "Chief Advisor to the Founder President & Chairman of Law Schools",
+          dept: "Amity University Uttar Pradesh, Noida",
+          image: null
+        }
+      ]
     },
     {
-      name: "Dr. Kartikeya Shukla",
-      role: "Assistant Professor",
-      dept: "Amity Institute of Environmental Sciences, Amity University Uttar Pradesh, Noida",
-      image: null
+      title: "Conveners",
+      members: [
+        {
+          name: "Prof. (Dr.) Renu Dhupper",
+          role: "Assistant Director",
+          dept: "Amity Institute of Environmental Sciences, Amity University Uttar Pradesh Noida",
+          image: null
+        },
+        {
+          name: "Prof. (Dr.) Rachana Singh",
+          role: "Associate Professor",
+          dept: "Amity Institute of Biotechnology, Amity University Uttar Pradesh, Noida",
+          image: null
+        },
+        {
+          name: "Dr. Garima Agarwal",
+          role: "Associate Professor and Head",
+          dept: "Amity Centre for Entrepreneurship Development, Amity University Uttar Pradesh, Noida",
+          image: null
+        }
+      ]
     },
     {
-      name: "Dr. Manoj Chandra Garg",
-      role: "Assistant Professor",
-      dept: "Amity Institute of Environmental Sciences, Amity University Uttar Pradesh, Noida",
-      image: null
-    },
-    {
-      name: "Dr. Juhi Gupta",
-      role: "Assistant Professor",
-      dept: "Amity Institute of Environmental Sciences, Amity University Uttar Pradesh, Noida",
-      image: null
+      title: "Student Organizing Committee",
+      members: [
+        { name: "Jashn Kulshrestha", role: "", dept: "", image: null },
+        { name: "Ananya Padhy", role: "", dept: "", image: null },
+        { name: "Aditya Vikram Singh", role: "", dept: "", image: null },
+        { name: "Devanshi Verma", role: "", dept: "", image: null },
+        { name: "Priyanshi Mishra", role: "", dept: "", image: null }
+      ]
     }
   ];
 
@@ -62,7 +110,7 @@ export default function Contributors() {
           className="badge badge-outline" 
           style={{ marginBottom: '1.25rem' }}
         >
-          Organising Committee
+          Organizing Committee
         </motion.span>
         
         <motion.h1 
@@ -82,7 +130,7 @@ export default function Contributors() {
             overflowWrap: 'normal'
           }}
         >
-          Contributors
+          Organizing Committee
         </motion.h1>
 
         <motion.p
@@ -97,98 +145,101 @@ export default function Contributors() {
             margin: '0 auto'
           }}
         >
-          The dedicated faculty members who coordinate this national forum and guide the sustainable initiative.
+          The dedicated individuals who coordinate this national forum and guide the sustainable initiative.
         </motion.p>
       </section>
 
-      {/* ================= SECTION: CONTRIBUTORS ================= */}
+      {/* ================= SECTION: COMMITTEE ================= */}
       <section className="container" style={{ marginBottom: '6rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '3rem', justifyContent: 'center' }}>
-          <Users style={{ color: 'var(--secondary)' }} size={24} />
-          <h2 style={{ fontSize: '2rem', color: 'var(--primary)', fontWeight: 800, fontFamily: 'var(--font-heading)', margin: 0 }}>
-            Our Contributors
-          </h2>
-        </div>
+        {sections.map((section, sIdx) => (
+          <div key={sIdx} style={{ marginBottom: '4rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem', justifyContent: 'center' }}>
+              <Users style={{ color: 'var(--secondary)' }} size={24} />
+              <h2 style={{ fontSize: '2rem', color: 'var(--primary)', fontWeight: 800, fontFamily: 'var(--font-heading)', margin: 0 }}>
+                {section.title}
+              </h2>
+            </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '2.5rem'
-        }} className="faculty-grid">
-          {contributors.map((member, idx) => (
-            <motion.div
-              key={idx}
-              {...fadeUp}
-              style={{
-                padding: '2.5rem 2rem',
-                background: '#ffffff',
-                border: '1px solid rgba(11, 61, 43, 0.06)',
-                borderRadius: '24px',
-                textAlign: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '1.25rem',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.01)'
-              }}
-              className="contributor-card"
-            >
-              <div style={{
-                width: '220px',
-                height: '280px',
-                borderRadius: '16px',
-                overflow: 'hidden',
-                background: 'var(--bg-light)',
-                border: '1px solid rgba(11, 61, 43, 0.08)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: 'var(--secondary)',
-                margin: '0 auto 0.5rem'
-              }}>
-                {member.image ? (
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center top'
-                    }}
-                  />
-                ) : (
-                  <UserCircle size={64} strokeWidth={1} />
-                )}
-              </div>
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '2.5rem'
+            }}>
+              {section.members.map((member, idx) => (
+                <motion.div
+                  key={idx}
+                  {...fadeUp}
+                  style={{
+                    flex: '1 1 300px',
+                    maxWidth: '380px',
+                    padding: '2.5rem 2rem',
+                    background: '#ffffff',
+                    border: '1px solid rgba(11, 61, 43, 0.06)',
+                    borderRadius: '24px',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '1.25rem',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.01)'
+                  }}
+                  className="contributor-card"
+                >
+                  <div style={{
+                    width: '220px',
+                    height: '280px',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    background: 'var(--bg-light)',
+                    border: '1px solid rgba(11, 61, 43, 0.08)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'var(--secondary)',
+                    margin: '0 auto 0.5rem'
+                  }}>
+                    {member.image ? (
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'center top'
+                        }}
+                      />
+                    ) : (
+                      <UserCircle size={64} strokeWidth={1} />
+                    )}
+                  </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <strong style={{ fontSize: '1.25rem', color: 'var(--primary)', fontWeight: 800 }}>
-                  {member.name}
-                </strong>
-                <span style={{ fontSize: '0.9rem', color: 'var(--secondary)', fontWeight: 700, lineHeight: '1.4' }}>
-                  {member.role}
-                </span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
-                  {member.dept}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <strong style={{ fontSize: '1.25rem', color: 'var(--primary)', fontWeight: 800 }}>
+                      {member.name}
+                    </strong>
+                    {member.role && (
+                      <span style={{ fontSize: '0.9rem', color: 'var(--secondary)', fontWeight: 700, lineHeight: '1.4' }}>
+                        {member.role}
+                      </span>
+                    )}
+                    {member.dept && (
+                      <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+                        {member.dept}
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
 
       {/* Responsive layout rules */}
       <style dangerouslySetInnerHTML={{__html: `
-        @media (max-width: 992px) {
-          .faculty-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
         @media (max-width: 576px) {
-          .faculty-grid {
-            grid-template-columns: 1fr !important;
-          }
           .contributor-card {
             padding: 2rem 1.5rem !important;
           }
