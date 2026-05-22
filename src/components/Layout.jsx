@@ -30,7 +30,7 @@ export default function Layout() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden', width: '100%' }}>
       <Navbar onRegisterClick={openModal} />
       <main style={{ flexGrow: 1 }}>
         <Outlet context={{ openModal }} />

@@ -42,7 +42,7 @@ export default function About() {
   ];
 
   return (
-    <div style={{ background: '#fbfbfa', minHeight: '100vh', paddingTop: '110px', paddingBottom: '80px' }}>
+    <div style={{ background: '#fbfbfa', minHeight: '100vh', paddingTop: '140px', paddingBottom: '80px' }}>
       
       {/* ================= HERO HEADER ================= */}
       <section className="container" style={{ textAlign: 'center', marginBottom: '5rem' }}>

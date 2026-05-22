@@ -67,27 +67,37 @@ export default function Navbar({ onRegisterClick }) {
           }} 
         />
 
+        {/* Announcement Banner */}
+        <div style={{
+          background: 'var(--primary)',
+          color: 'var(--bg-light)',
+          textAlign: 'center',
+          padding: '0.5rem',
+          fontSize: '0.85rem',
+          fontWeight: 600,
+          letterSpacing: '0.05em',
+        }}>
+          📣 Open for all teams with <span style={{ color: 'var(--accent)', fontWeight: 800 }}>0 Registration Fees!</span>
+        </div>
+
         <div className="container" style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center', 
-          height: '75px' 
+          height: '80px',
+          maxWidth: '1440px',
+          padding: '0 2.5rem'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 3vw, 1.5rem)' }}>
-            {/* Amity Logo */}
-            <img src="/amity_logo.png" alt="Amity University Logo" style={{ height: 'clamp(28px, 6vw, 46px)', width: 'auto' }} />
+          <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 2vw, 2rem)' }}>
             
+            {/* Amity Logo */}
+            <img src="/amity_logo.png" alt="Amity University Logo" style={{ height: 'clamp(36px, 7vw, 56px)', width: 'auto' }} />
+
             {/* Greenovators Logo */}
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem, 1.5vw, 0.75rem)', fontWeight: 800, fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', color: themeColor, fontFamily: 'var(--font-heading)', textDecoration: 'none' }}>
-              <motion.div
-                animate={{ rotate: [0, 8, 0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              >
-                <Leaf size={24} style={{ color: 'var(--secondary)' }} className="nav-leaf-icon" />
-              </motion.div>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem, 1.5vw, 0.75rem)', fontWeight: 800, fontSize: 'clamp(1.15rem, 2.8vw, 1.45rem)', color: themeColor, fontFamily: 'var(--font-heading)', textDecoration: 'none' }}>
               <div className="nav-logo-text" style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
                 <span>GREENOVATORS</span>
-                <span style={{ fontSize: 'clamp(0.5rem, 1.5vw, 0.65rem)', fontWeight: 500, letterSpacing: '0.15em', color: mutedThemeColor }}>HACKATHON 2026</span>
+                <span style={{ fontSize: 'clamp(0.55rem, 1.4vw, 0.65rem)', fontWeight: 600, letterSpacing: '0.1em', color: mutedThemeColor }}>HACKATHON BY AMITY UNIVERSITY</span>
               </div>
             </Link>
           </div>
@@ -143,7 +153,7 @@ export default function Navbar({ onRegisterClick }) {
         className="mobile-drawer"
         style={{
           position: 'fixed',
-          top: '75px',
+          top: '90px',
           left: 0,
           right: 0,
           bottom: 0,
@@ -196,11 +206,6 @@ export default function Navbar({ onRegisterClick }) {
           }
           .mobile-toggle {
             display: block !important;
-          }
-        }
-        @media (max-width: 440px) {
-          .nav-logo-text {
-            display: none !important;
           }
         }
       `}} />

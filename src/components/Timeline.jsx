@@ -52,8 +52,8 @@ export default function Timeline() {
         top: '20px',
         bottom: '20px',
         width: '2px',
-        background: 'linear-gradient(180deg, var(--secondary) 0%, #0284c7 50%, #8b5cf6 100%)',
-        opacity: 0.15,
+        background: 'rgba(0, 0, 0, 0.8)',
+        opacity: 1,
       }} className="central-timeline-line" />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
@@ -132,7 +132,7 @@ export default function Timeline() {
                       padding: '1.75rem',
                       borderRadius: '20px',
                       border: '1px solid rgba(11, 61, 43, 0.06)',
-                      background: 'var(--bg-card)',
+                      background: '#ffffff',
                       boxShadow: '0 8px 30px rgba(11, 61, 43, 0.01)',
                       display: 'flex',
                       flexDirection: 'column',
@@ -141,7 +141,7 @@ export default function Timeline() {
                       textAlign: 'right',
                     }}>
                       {step.items.map((item, idx) => (
-                        <div key={idx} style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+                        <div key={idx} style={{ fontSize: '0.9rem', color: '#000000', lineHeight: '1.4', fontWeight: 500 }}>
                           {item}
                         </div>
                       ))}
@@ -188,7 +188,7 @@ export default function Timeline() {
                       padding: '1.75rem',
                       borderRadius: '20px',
                       border: '1px solid rgba(11, 61, 43, 0.06)',
-                      background: 'var(--bg-card)',
+                      background: '#ffffff',
                       boxShadow: '0 8px 30px rgba(11, 61, 43, 0.01)',
                       display: 'flex',
                       flexDirection: 'column',
@@ -199,8 +199,9 @@ export default function Timeline() {
                       {step.items.map((item, idx) => (
                         <div key={idx} style={{ 
                           fontSize: '0.9rem', 
-                          color: 'var(--text-muted)', 
+                          color: '#000000', 
                           lineHeight: '1.4',
+                          fontWeight: 500,
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: '0.5rem',

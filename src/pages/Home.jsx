@@ -11,7 +11,8 @@ import {
 } from 'lucide-react';
 import { Link, useOutletContext } from 'react-router-dom';
 
-import Hero3DCanvas from '../components/Hero3DCanvas';
+import Sustainability3DCanvas from '../components/Sustainability3DCanvas';
+import Cloud3DCanvas from '../components/Cloud3DCanvas';
 import Timeline from '../components/Timeline';
 
 export default function Home() {
@@ -41,15 +42,14 @@ export default function Home() {
     <div style={{ background: '#fbfbfa', overflow: 'hidden' }}>
       
       {/* ================= HERO SECTION (Clean Light Theme) ================= */}
-      <section id="hero" style={{
+      <section id="hero" className="grid-bg" style={{
         position: 'relative',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '75px',
-        overflow: 'hidden',
-        background: 'radial-gradient(circle at center, var(--bg-light) 0%, rgba(245, 245, 244, 0.4) 100%)'
+        paddingTop: '130px',
+        overflow: 'hidden'
       }}>
         
         {/* Massive Background 3D Canvas */}
@@ -59,11 +59,35 @@ export default function Home() {
           left: 0,
           width: '100%',
           height: '100%',
-          zIndex: 1,
+          zIndex: 2,
           pointerEvents: 'auto'
         }}>
-          <Hero3DCanvas />
+          <Sustainability3DCanvas />
         </div>
+
+        {/* Floating Clouds in Hero */}
+        <div style={{ position: 'absolute', top: '15%', left: '0', width: '100%', height: '200px', zIndex: 3, pointerEvents: 'none' }}>
+          <motion.div
+            initial={{ x: '100vw' }}
+            animate={{ x: '-20vw' }}
+            transition={{ repeat: Infinity, duration: 35, ease: 'linear' }}
+            style={{ width: 'fit-content' }}
+          >
+            <Cloud3DCanvas scale={1.8} opacity={0.65} />
+          </motion.div>
+        </div>
+        <div style={{ position: 'absolute', top: '40%', left: '0', width: '100%', height: '150px', zIndex: 3, pointerEvents: 'none' }}>
+          <motion.div
+            initial={{ x: '100vw' }}
+            animate={{ x: '-20vw' }}
+            transition={{ repeat: Infinity, duration: 45, ease: 'linear', delay: 15 }}
+            style={{ width: 'fit-content' }}
+          >
+            <Cloud3DCanvas scale={1.2} opacity={0.5} />
+          </motion.div>
+        </div>
+
+
 
         {/* Foreground Content */}
         <div className="container" style={{ position: 'relative', zIndex: 10, pointerEvents: 'none' }}>
@@ -310,59 +334,79 @@ export default function Home() {
       </section>
 
       {/* ================= ABOUT VISION SECTION ================= */}
-      <section id="about" style={{ padding: '7rem 0', position: 'relative', background: '#ffffff' }}>
-        <div className="container" style={{ maxWidth: '950px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', textAlign: 'center', alignItems: 'center' }}>
-            <span className="badge badge-outline" style={{ fontSize: '0.75rem' }}>
-              National Sustainability Initiative
-            </span>
+      <section id="about" style={{ padding: '7rem 0', position: 'relative', background: '#ffffff', overflow: 'hidden' }}>
+        
+        <div className="container" style={{ maxWidth: '1240px', position: 'relative', zIndex: 10 }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1.25fr 0.75fr',
+            gap: '4rem',
+            alignItems: 'center'
+          }} className="about-grid">
+            
+            {/* Left Column: Text & Badges */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left', alignItems: 'flex-start' }}>
+              <span className="badge badge-outline" style={{ fontSize: '0.75rem' }}>
+                National Sustainability Initiative
+              </span>
 
-            <h2 style={{ 
-              fontSize: '2.75rem', 
-              color: 'var(--primary)', 
-              fontFamily: 'var(--font-heading)',
-              fontWeight: 900,
-              letterSpacing: '-0.03em',
-              lineHeight: 1.15,
-              maxWidth: '800px'
-            }} className="section-heading">
-              Aligning Technology with UN Sustainable Goals
-            </h2>
+              <h2 style={{ 
+                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', 
+                color: 'var(--primary)', 
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 900,
+                letterSpacing: '-0.03em',
+                lineHeight: 1.15,
+                margin: 0
+              }} className="section-heading">
+                Aligning Technology with UN Sustainable Goals
+              </h2>
 
-            <p style={{ 
-              fontSize: '1.15rem', 
-              color: 'var(--text-muted)', 
-              lineHeight: '1.55', 
-              maxWidth: '800px' 
-            }}>
-              Organised by the prestigious <strong>Amity Institute of Environmental Sciences</strong>, the Greenovators Hackathon 2026 inspires young researchers and entrepreneurs to provide scalable prototypes for carbon pathways, urban logistics, and circular models.
-            </p>
+              <p style={{ 
+                fontSize: '1.1rem', 
+                color: 'var(--text-muted)', 
+                lineHeight: '1.6', 
+                margin: 0
+              }}>
+                Organised by the prestigious <strong>Amity Institute of Environmental Sciences</strong>, the Greenovators Hackathon 2026 inspires young researchers and entrepreneurs to provide scalable prototypes for carbon pathways, urban logistics, and circular models.
+              </p>
 
+              <div style={{
+                display: 'flex',
+                gap: '0.6rem 0.75rem',
+                justifyContent: 'flex-start',
+                flexWrap: 'wrap',
+                margin: 0
+              }}>
+                {["SDG 7: Affordable Clean Energy", "SDG 9: Industry & Infrastructure", "SDG 11: Sustainable Cities", "SDG 12: Circular Economy", "SDG 13: Climate Action"].map((sdg, idx) => (
+                  <span key={idx} className="badge" style={{
+                    backgroundColor: 'rgba(11, 61, 43, 0.04)',
+                    color: 'var(--primary)',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    border: '1px solid rgba(11, 61, 43, 0.08)'
+                  }}>
+                    {sdg}
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ marginTop: '0.5rem' }}>
+                <Link to="/about" className="btn-primary" style={{ padding: '0.75rem 2rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                  Read About Initiative <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Free-floating 3D Model */}
             <div style={{
-              display: 'flex',
-              gap: '0.75rem',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              marginTop: '0.5rem'
+              width: '100%',
+              height: '450px',
+              position: 'relative'
             }}>
-              {["SDG 7: Affordable Clean Energy", "SDG 9: Industry & Infrastructure", "SDG 11: Sustainable Cities", "SDG 12: Circular Economy", "SDG 13: Climate Action"].map((sdg, idx) => (
-                <span key={idx} className="badge" style={{
-                  backgroundColor: 'rgba(11, 61, 43, 0.04)',
-                  color: 'var(--primary)',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  border: '1px solid rgba(11, 61, 43, 0.08)'
-                }}>
-                  {sdg}
-                </span>
-              ))}
+              <Sustainability3DCanvas modelPath="/fountain.glb" scaleMultiplier={0.7} tiltX={0.45} />
             </div>
 
-            <div style={{ marginTop: '1.5rem' }}>
-              <Link to="/about" className="btn-primary" style={{ padding: '0.75rem 2rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                Read About Initiative <ArrowRight size={16} />
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -374,9 +418,13 @@ export default function Home() {
           {/* Section Header */}
           <div style={{ position: 'relative', textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
             
-            {/* Decorative CSS Clouds */}
-            <div className="css-cloud css-cloud-1" style={{ top: '-10px', left: '15%', opacity: 0.8 }}></div>
-            <div className="css-cloud css-cloud-2" style={{ top: '30px', right: '10%', opacity: 0.6 }}></div>
+            {/* 3D Model Clouds */}
+            <div style={{ position: 'absolute', top: '-10px', left: '15%', opacity: 0.8, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-1">
+              <Cloud3DCanvas scale={1.2} />
+            </div>
+            <div style={{ position: 'absolute', top: '20px', right: '10%', opacity: 0.9, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-2">
+              <Cloud3DCanvas scale={0.9} />
+            </div>
 
             <span className="badge badge-outline" style={{ position: 'relative', zIndex: 2, background: 'rgba(255,255,255,0.8)' }}>
               Hackathon Themes
@@ -451,7 +499,7 @@ export default function Home() {
 
 
       {/* ================= TIMELINE SECTION ================= */}
-      <section id="timeline" style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
+      <section id="timeline" className="grid-bg" style={{ padding: '6rem 0', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
           
           <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
@@ -575,6 +623,8 @@ export default function Home() {
                       border: '1px solid rgba(11, 61, 43, 0.06)',
                       background: 'var(--bg-light)',
                       display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '1rem',
                       justifyContent: 'space-between',
                       alignItems: 'center',
                     }}
@@ -693,6 +743,13 @@ export default function Home() {
         }
 
         @media (max-width: 992px) {
+          .about-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .about-3d-container {
+            height: 350px !important;
+          }
           .hero-heading {
             font-size: 2.75rem !important;
           }
@@ -728,6 +785,16 @@ export default function Home() {
           }
           .stats-grid {
             grid-template-columns: 1fr !important;
+          }
+          .milestone-row {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .prize-panel {
+            padding: 1.5rem !important;
+          }
+          .hero-heading {
+            font-size: 2.25rem !important;
           }
         }
       `}} />
