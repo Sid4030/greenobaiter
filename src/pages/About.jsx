@@ -61,7 +61,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            fontSize: '3.75rem',
+            fontSize: 'clamp(2.5rem, 8vw, 3.75rem)',
             color: 'var(--primary)',
             fontFamily: 'var(--font-heading)',
             fontWeight: 900,
@@ -79,7 +79,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           style={{
-            fontSize: '1.25rem',
+            fontSize: 'clamp(1rem, 4vw, 1.25rem)',
             color: 'var(--text-muted)',
             lineHeight: '1.6',
             maxWidth: '750px',
@@ -103,7 +103,7 @@ export default function About() {
             <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
               Organizing Host
             </span>
-            <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
               Amity Institute of Environmental Sciences
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
@@ -123,7 +123,7 @@ export default function About() {
             {...fadeUp}
             style={{
               background: '#041710',
-              padding: '3rem',
+              padding: 'clamp(1.5rem, 5vw, 3rem)',
               borderRadius: '28px',
               border: '1px solid rgba(255,255,255,0.06)',
               position: 'relative',
@@ -143,7 +143,7 @@ export default function About() {
             <div style={{ position: 'relative', zIndex: 1, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#bef264' }}>
                 <GraduationCap size={36} />
-                <h3 style={{ fontSize: '1.35rem', color: '#ffffff', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.35rem)', color: '#ffffff', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
                   AIES Research Scope
                 </h3>
               </div>
@@ -188,7 +188,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}
               >
-                <strong style={{ fontSize: '2.75rem', color: 'var(--accent)', fontFamily: 'var(--font-heading)', fontWeight: 900 }}>
+                <strong style={{ fontSize: 'clamp(2rem, 6vw, 2.75rem)', color: 'var(--accent)', fontFamily: 'var(--font-heading)', fontWeight: 900 }}>
                   {milestone.number}
                 </strong>
                 <span style={{ fontSize: '0.9rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -209,7 +209,7 @@ export default function About() {
           <span className="badge badge-outline" style={{ marginBottom: '0.5rem' }}>
             Our Foundations
           </span>
-          <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900 }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900 }}>
             Methodologies Fostering Change
           </h2>
         </div>
@@ -227,7 +227,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
               style={{
-                padding: '2.5rem',
+                padding: 'clamp(1.5rem, 5vw, 2.5rem)',
                 background: '#ffffff',
                 border: '1px solid rgba(11, 61, 43, 0.06)',
                 borderRadius: '24px',
