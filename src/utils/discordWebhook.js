@@ -1,10 +1,23 @@
 // Discord Webhook Utility
-const DISCORD_WEBHOOK_URL = import.meta.env
-    .VITE_REGISTRATION_DISCORD_WEBHOOK_URL;
+import { getRegistrationWebhookURL, validateEnv } from "./envValidator";
+
+const DISCORD_WEBHOOK_URL = getRegistrationWebhookURL();
 
 export async function sendRegistrationToDiscord(registrationData) {
+    // Validate environment variables
+    if (!DISCORD_WEBHOOK_URL) {
+        console.error(
+            "❌ Discord webhook URL not configured. Check environment variables.",
+        );
+        return {
+            success: false,
+            message: "Discord webhook not configured on this deployment",
+        };
+    }
+
     try {
         console.log("📤 Sending registration to Discord...");
+        console.log("🔗 Webhook URL configured:", !!DISCORD_WEBHOOK_URL);
 
         const teamLeader =
             registrationData.members.find((m) => m.isLeader) ||
@@ -84,7 +97,7 @@ export async function sendRegistrationToDiscord(registrationData) {
         });
 
         if (response.ok) {
-            console.log("✓ Registration message sent to Discord");
+            console.log("✅ Registration message sent to Discord");
 
             // If file exists, send it separately
             if (registrationData.documentationLink) {
@@ -99,16 +112,36 @@ export async function sendRegistrationToDiscord(registrationData) {
                 message: "Data sent to Discord successfully",
             };
         } else {
-            console.error("✗ Discord webhook failed:", response.statusText);
-            return { success: false, message: "Failed to send to Discord" };
+            const errorText = await response.text();
+            console.error("❌ Discord webhook failed:", {
+                status: response.status,
+                statusText: response.statusText,
+                body: errorText,
+                url: DISCORD_WEBHOOK_URL ? "[URL configured]" : "[NO URL]",
+            });
+            return {
+                success: false,
+                message: `Failed to send to Discord (${response.status})`,
+            };
         }
     } catch (error) {
-        console.error("✗ Discord error:", error);
+        console.error("❌ Discord error:", {
+            message: error.message,
+            stack: error.stack,
+            webhookConfigured: !!DISCORD_WEBHOOK_URL,
+        });
         return { success: false, message: "Discord error: " + error.message };
     }
 }
 
 async function sendFileToDiscord(base64Data, fileName) {
+    if (!DISCORD_WEBHOOK_URL) {
+        console.error(
+            "❌ Cannot upload file: Discord webhook URL not configured",
+        );
+        return false;
+    }
+
     try {
         console.log("📤 Uploading file to Discord...");
 
@@ -130,14 +163,22 @@ async function sendFileToDiscord(base64Data, fileName) {
         });
 
         if (response.ok) {
-            console.log("✓ File uploaded to Discord");
+            console.log("✅ File uploaded to Discord");
             return true;
         } else {
-            console.error("✗ File upload failed:", response.statusText);
+            const errorText = await response.text();
+            console.error("❌ File upload failed:", {
+                status: response.status,
+                statusText: response.statusText,
+                body: errorText,
+            });
             return false;
         }
     } catch (error) {
-        console.error("✗ File upload error:", error);
+        console.error("❌ File upload error:", {
+            message: error.message,
+            stack: error.stack,
+        });
         return false;
     }
 }
