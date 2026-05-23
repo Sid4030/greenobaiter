@@ -82,14 +82,16 @@ export default function ProblemStatement() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           style={{
-            fontSize: '3.75rem',
+            fontSize: 'clamp(1.85rem, 7.5vw, 3.75rem)',
             color: 'var(--primary)',
             fontFamily: 'var(--font-heading)',
             fontWeight: 900,
             letterSpacing: '-0.04em',
             lineHeight: 1.1,
             maxWidth: '900px',
-            margin: '0 auto 1.5rem'
+            margin: '0 auto 1.5rem',
+            wordBreak: 'keep-all',
+            overflowWrap: 'normal'
           }}
         >
           Engineering Solutions For <span style={{ color: 'var(--secondary)' }}>Global Climatic Challenges</span>

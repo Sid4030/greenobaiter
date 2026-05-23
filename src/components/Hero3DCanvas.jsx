@@ -77,7 +77,7 @@ export default function Hero3DCanvas() {
     const targetScale = isMobile ? 4.5 : 6.0;
 
     loader.load(
-      '/Untitled21.glb',
+      'assets/3dModel.glb',
       (gltf) => {
         gltfModel = gltf.scene;
 

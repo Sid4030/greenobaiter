@@ -271,7 +271,7 @@ export default function Home() {
           animation: 'marquee 28s linear infinite',
           willChange: 'transform'
         }} className="marquee-content">
-          {Array(4).fill("Innovate Green. Build Smart. Impact Tomorrow. •").map((text, idx) => (
+          {Array(4).fill("Innovate Green. Build Smart. Impact Tomorrow.").map((text, idx) => (
             <span key={idx} style={{
               fontSize: '1.15rem',
               fontWeight: 800,
@@ -420,10 +420,30 @@ export default function Home() {
             
             {/* 3D Model Clouds */}
             <div style={{ position: 'absolute', top: '-10px', left: '15%', opacity: 0.8, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-1">
-              <Cloud3DCanvas scale={1.2} />
+              <motion.div
+                animate={{ x: [-20, 20], y: [-6, 6] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 8,
+                  ease: "easeInOut"
+                }}
+              >
+                <Cloud3DCanvas scale={1.2} />
+              </motion.div>
             </div>
             <div style={{ position: 'absolute', top: '20px', right: '10%', opacity: 0.9, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-2">
-              <Cloud3DCanvas scale={0.9} />
+              <motion.div
+                animate={{ x: [20, -20], y: [6, -6] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 9,
+                  ease: "easeInOut"
+                }}
+              >
+                <Cloud3DCanvas scale={0.9} />
+              </motion.div>
             </div>
 
             <span className="badge badge-outline" style={{ position: 'relative', zIndex: 2, background: 'rgba(255,255,255,0.8)' }}>
@@ -574,7 +594,7 @@ export default function Home() {
                 display: 'block',
                 marginBottom: '1.25rem'
               }}>
-                ₹ 1,00,000
+                ₹ 2,00,000 *
               </strong>
 
               <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.95rem', lineHeight: '1.5', marginBottom: '1.25rem' }}>

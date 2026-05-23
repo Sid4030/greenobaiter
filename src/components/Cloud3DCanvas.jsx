@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-export default function Cloud3DCanvas({ scale = 1, opacity = 0.8 }) {
+export default function Cloud3DCanvas({ scale = 1, opacity = 0.8, size = 120 }) {
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -16,16 +16,28 @@ export default function Cloud3DCanvas({ scale = 1, opacity = 0.8 }) {
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(120, 120);
+    renderer.setSize(size, size);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
+    
+    // Main directional light
     const dirLight = new THREE.DirectionalLight(0xffffff, 2);
     dirLight.position.set(5, 5, 5);
     scene.add(dirLight);
+
+    // Sun Point (Punctual Light)
+    const sunPointLight = new THREE.PointLight(0xffeeba, 5, 50);
+    sunPointLight.position.set(-5, 5, 5);
+    scene.add(sunPointLight);
+
+    // Fill Light (Punctual Light)
+    const fillLight = new THREE.PointLight(0xaaccff, 3, 50);
+    fillLight.position.set(5, -2, -5);
+    scene.add(fillLight);
 
     let model = null;
     let mixer = null;
