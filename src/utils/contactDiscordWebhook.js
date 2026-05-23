@@ -2,8 +2,9 @@
 // CONTACT FORM DISCORD WEBHOOK INTEGRATION
 // ============================================
 
-const CONTACT_DISCORD_WEBHOOK_URL = import.meta.env
-    .VITE_CONTACT_DISCORD_WEBHOOK_URL;
+import { getContactWebhookURL, validateEnv } from "./envValidator";
+
+const CONTACT_DISCORD_WEBHOOK_URL = getContactWebhookURL();
 
 /**
  * Send contact form data to Discord webhook
@@ -11,6 +12,17 @@ const CONTACT_DISCORD_WEBHOOK_URL = import.meta.env
  * @returns {Promise<{success: boolean, message: string}>}
  */
 export async function sendContactToDiscord(contactData) {
+    // Validate environment variables
+    if (!CONTACT_DISCORD_WEBHOOK_URL) {
+        console.error(
+            "❌ Discord webhook URL not configured. Check environment variables.",
+        );
+        return {
+            success: false,
+            message: "Discord webhook not configured on this deployment",
+        };
+    }
+
     try {
         const { name, email, university, track, message } = contactData;
 
@@ -62,6 +74,7 @@ export async function sendContactToDiscord(contactData) {
         };
 
         // Send to Discord
+        console.log("📤 Sending contact form to Discord...");
         const response = await fetch(CONTACT_DISCORD_WEBHOOK_URL, {
             method: "POST",
             headers: {
@@ -73,18 +86,29 @@ export async function sendContactToDiscord(contactData) {
         });
 
         if (response.ok) {
-            console.log("✓ Contact form sent to Discord successfully");
+            console.log("✅ Contact form sent to Discord successfully");
             return { success: true, message: "Message sent successfully" };
         } else {
             const errorText = await response.text();
-            console.error("Discord webhook error:", errorText);
+            console.error("❌ Discord webhook error:", {
+                status: response.status,
+                statusText: response.statusText,
+                body: errorText,
+                url: CONTACT_DISCORD_WEBHOOK_URL
+                    ? "[URL configured]"
+                    : "[NO URL]",
+            });
             return {
                 success: false,
-                message: "Failed to send message to Discord",
+                message: `Failed to send message to Discord (${response.status}): ${errorText}`,
             };
         }
     } catch (error) {
-        console.error("Error sending contact to Discord:", error);
-        return { success: false, message: error.message };
+        console.error("❌ Error sending contact to Discord:", {
+            message: error.message,
+            stack: error.stack,
+            webhookConfigured: !!CONTACT_DISCORD_WEBHOOK_URL,
+        });
+        return { success: false, message: `Error: ${error.message}` };
     }
 }
