@@ -14,10 +14,10 @@ export default function About() {
   const { openModal } = useOutletContext();
 
   const milestones = [
-    { number: "15+", label: "Research Patents", desc: "Eco-innovations filed by student cohorts" },
-    { number: "40+", label: "Academic Publications", desc: "Scientific studies in green technology journals" },
-    { number: "10+", label: "State Collaborations", desc: "Working with municipal agencies on urban recovery" },
-    { number: "1500+", label: "Global Alumni", desc: "Leading sustainability roles worldwide" }
+    { number: "Top 3%", label: "Global Universities", desc: "Consistently ranked by QS & THE rankings" },
+    { number: "1880+", label: "Patents Filed", desc: "Among the highest by an Indian academic institution" },
+    { number: "A+", label: "NAAC Grade", desc: "Awarded by National Assessment and Accreditation Council" },
+    { number: "LEED Platinum", label: "Green Campuses", desc: "Certified sustainable and energy-efficient infrastructure" }
   ];
 
   const pillars = [
@@ -104,13 +104,13 @@ export default function About() {
               Organizing Host
             </span>
             <h2 style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
-              Amity Institute of Environmental Sciences
+              Amity University Uttar Pradesh
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Amity Institute of Environmental Sciences (AIES) is a premier academic department of Amity University Uttar Pradesh, dedicated to developing technical environmental solutions. AIES conducts cutting-edge research in waste management, carbon capture, air pollution modeling, and ecological remediation.
+              Amity University is a globally recognized institution committed to nation-building and societal progress through integrated, value-based, and transcultural education that harmonizes modernity with tradition. Established in 2005, Amity University Noida is a premier NAAC A+ graded private university located in the Delhi NCR region, renowned for its 60+ acre hi-tech campus and wide academic offerings.
             </p>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              The national Greenovators Hackathon is our flagship platform. It challenges the brightest youth minds across India to refine their raw scientific concepts into tangible, deployable hardware and software prototypes.
+              With over 600 undergraduate, postgraduate, and doctoral programs across diverse and emerging disciplines, Amity promotes excellence in education, research, innovation, and professional development. The university emphasizes holistic growth by nurturing human values, cultural pride, leadership, and critical thinking. Through global exposure, extensive patent contributions, and international study pathways, Amity shapes students into skilled professionals, ethical individuals, and compassionate citizens dedicated to responsible leadership, societal advancement, and global development.
             </p>
             <div style={{ marginTop: '0.5rem' }}>
               <button onClick={openModal} className="btn-primary" style={{ padding: '0.85rem 2rem', cursor: 'pointer' }}>
@@ -122,49 +122,32 @@ export default function About() {
           <motion.div 
             {...fadeUp}
             style={{
-              background: '#041710',
-              padding: 'clamp(1.5rem, 5vw, 3rem)',
               borderRadius: '28px',
-              border: '1px solid rgba(255,255,255,0.06)',
               position: 'relative',
               overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+              boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+              height: '100%',
+              minHeight: '400px'
             }}
           >
-            {/* Fine grain dot grid background */}
+            {/* Image Placeholder - User will replace this */}
             <div style={{
+              width: '100%',
+              height: '100%',
               position: 'absolute',
-              top: 0, left: 0, right: 0, bottom: 0,
-              backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0)',
-              backgroundSize: '24px 24px',
-              opacity: 0.8
-            }} />
-            
-            <div style={{ position: 'relative', zIndex: 1, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#bef264' }}>
-                <GraduationCap size={36} />
-                <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.35rem)', color: '#ffffff', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
-                  AIES Research Scope
-                </h3>
-              </div>
-              
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', padding: 0, margin: 0, listStyle: 'none' }}>
-                {[
-                  { title: "Circular Economy Science", desc: "Analyzing biochemical conversions of organic & municipal waste structures." },
-                  { title: "Resilient City Architectures", desc: "Modeling micro-climate impacts, public green spaces, and localized pollution levels." },
-                  { title: "Eco-Industrial Symbiosis", desc: "Designing closed-loop pipelines where output waste of one sector fuels another." },
-                  { title: "Climate Policy & Audits", desc: "Translating engineering specifications into carbon-credit models and policy reports." }
-                ].map((item, idx) => (
-                  <li key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <strong style={{ color: '#bef264', fontSize: '0.95rem', fontWeight: 700 }}>
-                      • {item.title}
-                    </strong>
-                    <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.85rem', paddingLeft: '1.1rem' }}>
-                      {item.desc}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              top: 0,
+              left: 0,
+              background: 'rgba(11, 61, 43, 0.04)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--text-muted)',
+              border: '2px dashed rgba(11, 61, 43, 0.1)',
+              borderRadius: '28px'
+            }}>
+              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Your Campus Image Here</span>
+              <span style={{ fontSize: '0.75rem', opacity: 0.7 }}>(Replace in code)</span>
             </div>
           </motion.div>
 

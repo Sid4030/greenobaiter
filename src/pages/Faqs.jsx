@@ -12,7 +12,7 @@ const faqData = [
       },
       {
         q: "What is the team size requirement?",
-        a: "Teams must consist of a minimum of 2 members and a maximum of 5 members. Individual participations are not permitted to ensure collaborative development."
+        a: "Teams must consist of a minimum of 1 member and a maximum of 4 members. Individual participations are permitted."
       },
       {
         q: "Can a team have members from different universities?",
@@ -28,10 +28,6 @@ const faqData = [
         a: "No. For the initial phase, teams submit a proposal document detailing the problem statement, scientific hypothesis, block architecture, and expected SDG impact. High-fidelity prototypes are developed during subsequent selection rounds."
       },
       {
-        q: "Can I submit an idea that is already being incubated?",
-        a: "Yes, provided the prototype has not received commercial venture capital seed funding or previous national awards. Scaling existing lab models into hackathon prototypes is encouraged."
-      },
-      {
         q: "Are software-only solutions allowed?",
         a: "For the 'Smart Cities' and 'Circular Waste' tracks, physical or biological hardware prototypes are highly preferred. Software-only or machine learning repository submissions are accepted for the 'Net Zero AI' informatics track."
       }
@@ -45,12 +41,12 @@ const faqData = [
         a: "No! Registration and submission of proposals for the Greenovators Hackathon 2026 are 100% free of cost."
       },
       {
-        q: "Where will the Grand Finale be hosted?",
-        a: "The 3-day Grand Finale sprint will be hosted physically at the Amity University Uttar Pradesh campus in Sector-125, Noida, India."
+        q: "Where will the Event be hosted?",
+        a: "The 3-day Event sprint will be hosted physically at the Amity University Uttar Pradesh campus in Sector-125, Noida, India."
       },
       {
         q: "Will travel and accommodation be funded for finalist teams?",
-        a: "Accommodation and meals during the 3-day Grand Finale will be provided free of cost by AIES. Limited travel subsidies will be awarded to outstation finalist teams based on budget approvals."
+        a: "Accommodation and meals during the 3-day Event will be provided free of cost by Amity University. Limited travel subsidies will be awarded to outstation finalist teams based on budget approvals."
       }
     ]
   }

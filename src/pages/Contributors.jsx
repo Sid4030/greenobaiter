@@ -17,7 +17,7 @@ export default function Contributors() {
       members: [
         {
           name: "Dr. Ashok K. Chauhan",
-          role: "",
+          role: "Founder President of the Amity Education Group",
           dept: "",
           image: null
         }
@@ -74,7 +74,7 @@ export default function Contributors() {
         },
         {
           name: "Prof. (Dr.) Rachana Singh",
-          role: "Associate Professor",
+          role: "Professor",
           dept: "Amity Institute of Biotechnology, Amity University Uttar Pradesh, Noida",
           image: null
         },
@@ -99,7 +99,22 @@ export default function Contributors() {
   ];
 
   return (
-    <div style={{ background: '#fbfbfa', minHeight: '100vh', paddingTop: '140px', paddingBottom: '80px' }}>
+    <div style={{ 
+      backgroundColor: '#f8fdf8',
+      backgroundImage: `
+        radial-gradient(circle at 0% 0%, rgba(162, 230, 53, 0.4) 0, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(11, 61, 43, 0.25) 0, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0, transparent 60%),
+        linear-gradient(to right, rgba(11, 61, 43, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(11, 61, 43, 0.08) 1px, transparent 1px)
+      `,
+      backgroundSize: '100% 100%, 100% 100%, 100% 100%, 80px 80px, 80px 80px',
+      minHeight: '100vh', 
+      paddingTop: '140px', 
+      paddingBottom: '80px',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
       
       {/* ================= HERO HEADER ================= */}
       <section className="container" style={{ textAlign: 'center', marginBottom: '5rem' }}>
