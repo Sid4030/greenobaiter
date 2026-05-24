@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Globe, Leaf, Users, Zap, BookOpen, GraduationCap } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -10,8 +15,109 @@ const fadeUp = {
   transition: { duration: 0.8, ease: "easeOut" }
 };
 
+const SplitText = ({ text }) => {
+  return text.split(" ").map((word, i) => (
+    <span key={i} className="reveal-word" style={{ opacity: 0.2, display: 'inline-block', marginRight: '0.25em' }}>
+      {word}
+    </span>
+  ));
+};
+
 export default function About() {
   const { openModal } = useOutletContext();
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 993px)", () => {
+      // Setup the timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "center center",
+          end: "+=300%", // Longer pin duration for word-by-word reveal
+          pin: true,
+          scrub: 1, // Smooth scrubbing
+        }
+      });
+
+      // Animate the image to shrink and align to the left
+      tl.to(".pin-image-inner", {
+        top: "25vh",
+        left: "5vw",
+        width: "45vw",
+        height: "50vh", // Rectangle showing 80-90% of image correctly
+        borderRadius: "28px",
+        ease: "power2.inOut"
+      }, 0);
+
+      // Animate the text to fade in and slide up
+      tl.fromTo(".pin-text-content", {
+        opacity: 0,
+        y: 100
+      }, {
+        opacity: 1,
+        y: 0,
+        ease: "power2.out",
+        duration: 0.5
+      }, 0.2); // slight delay so image starts shrinking first
+
+      // Animate the heading words springing up
+      tl.to(".heading-word", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+        duration: 0.6
+      }, 0.4);
+
+      // Animate the words to reveal sequentially as you scroll
+      tl.to(".reveal-word", {
+        opacity: 1,
+        color: "var(--primary)",
+        stagger: 0.1,
+        ease: "none",
+        duration: 2
+      }, 0.7); // Start after the text block has slid in
+    });
+
+    mm.add("(max-width: 992px)", () => {
+      // Mobile text reveal timeline
+      const mobileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".pin-text-wrapper",
+          start: "top 70%",
+          end: "+=150%", // Enough scroll distance to reveal text on mobile
+          scrub: 1,
+        }
+      });
+      
+      mobileTl.fromTo(".pin-text-content", {
+        opacity: 0,
+        y: 30
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.2
+      })
+      .to(".heading-word", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+        duration: 0.4
+      }, 0.1)
+      .to(".reveal-word", {
+        opacity: 1,
+        color: "var(--primary)",
+        stagger: 0.1,
+        ease: "none",
+        duration: 1
+      }, 0.3);
+    });
+
+  }, { scope: containerRef });
 
   const milestones = [
     { number: "Top 3%", label: "Global Universities", desc: "Consistently ranked by QS & THE rankings" },
@@ -91,66 +197,44 @@ export default function About() {
       </section>
 
       {/* ================= DETAILED BLOCKS ================= */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.1fr 1fr',
-          gap: '5rem',
-          alignItems: 'center'
-        }} className="about-grid">
-          
-          <motion.div {...fadeUp} style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
-              Organizing Host
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
-              Amity University Uttar Pradesh
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Amity University is a globally recognized institution committed to nation-building and societal progress through integrated, value-based, and transcultural education that harmonizes modernity with tradition. Established in 2005, Amity University Noida is a premier NAAC A+ graded private university located in the Delhi NCR region, renowned for its 60+ acre hi-tech campus and wide academic offerings.
-            </p>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              With over 600 undergraduate, postgraduate, and doctoral programs across diverse and emerging disciplines, Amity promotes excellence in education, research, innovation, and professional development. The university emphasizes holistic growth by nurturing human values, cultural pride, leadership, and critical thinking. Through global exposure, extensive patent contributions, and international study pathways, Amity shapes students into skilled professionals, ethical individuals, and compassionate citizens dedicated to responsible leadership, societal advancement, and global development.
-            </p>
-            <div style={{ marginTop: '0.5rem' }}>
+      <section ref={containerRef} className="pin-section">
+        
+        {/* Full width image wrapper initially */}
+        <div className="pin-image-wrapper">
+          <div className="pin-image-inner">
+            <img 
+              src="https://amity.edu/images/university.jpg" 
+              alt="Amity University Campus" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
+        </div>
+
+        {/* Text wrapper positioned on the right */}
+        <div className="pin-text-wrapper container">
+          <div className="pin-text-spacer">
+            <div className="pin-text-content">
+              <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
+                Organizing Host
+              </span>
+              <h2 className="amity-heading" style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2, marginTop: '1.5rem', marginBottom: '1.5rem', overflow: 'hidden' }}>
+                {"Amity University Uttar Pradesh".split(" ").map((word, i) => (
+                  <span key={i} className="heading-word" style={{ display: 'inline-block', marginRight: '0.25em', opacity: 0, transform: 'translateY(40px)' }}>
+                    {word}
+                  </span>
+                ))}
+              </h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                <SplitText text="Amity University is a globally recognized institution committed to nation-building and societal progress through integrated, value-based, and transcultural education that harmonizes modernity with tradition. Established in 2005, Amity University Noida is a premier NAAC A+ graded private university located in the Delhi NCR region, renowned for its 60+ acre hi-tech campus and wide academic offerings." />
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                <SplitText text="With over 600 undergraduate, postgraduate, and doctoral programs across diverse and emerging disciplines, Amity promotes excellence in education, research, innovation, and professional development. The university emphasizes holistic growth by nurturing human values, cultural pride, leadership, and critical thinking. Through global exposure, extensive patent contributions, and international study pathways, Amity shapes students into skilled professionals, ethical individuals, and compassionate citizens dedicated to responsible leadership, societal advancement, and global development." />
+              </p>
               <button onClick={openModal} className="btn-primary" style={{ padding: '0.85rem 2rem', cursor: 'pointer' }}>
                 Join the Hackathon Proposal
               </button>
             </div>
-          </motion.div>
-
-          <motion.div 
-            {...fadeUp}
-            style={{
-              borderRadius: '28px',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-              height: '100%',
-              minHeight: '400px'
-            }}
-          >
-            {/* Image Placeholder - User will replace this */}
-            <div style={{
-              width: '100%',
-              height: '100%',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              background: 'rgba(11, 61, 43, 0.04)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--text-muted)',
-              border: '2px dashed rgba(11, 61, 43, 0.1)',
-              borderRadius: '28px'
-            }}>
-              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Your Campus Image Here</span>
-              <span style={{ fontSize: '0.75rem', opacity: 0.7 }}>(Replace in code)</span>
-            </div>
-          </motion.div>
-
+          </div>
         </div>
       </section>
 
@@ -246,10 +330,97 @@ export default function About() {
 
       {/* Responsive overrides */}
       <style dangerouslySetInnerHTML={{__html: `
+        .pin-section {
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          overflow: hidden;
+          background-color: transparent;
+          margin-left: calc(-50vw + 50%);
+          margin-bottom: 6rem;
+        }
+        .pin-image-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        .pin-image-inner {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 0px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+          transform-origin: center center;
+        }
+        .pin-text-wrapper {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .pin-text-spacer {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: auto;
+        }
+        .pin-text-content {
+          padding: 1rem 0;
+          max-width: 650px;
+          background: transparent;
+          margin-right: 2rem;
+        }
+
         @media (max-width: 992px) {
-          .about-grid {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+          .pin-section {
+            height: auto !important;
+            flex-direction: column !important;
+            overflow: visible !important;
+            margin-left: 0 !important;
+            width: 100% !important;
+          }
+          .pin-image-wrapper {
+            position: relative !important;
+            width: 100vw !important;
+            height: 40vh !important;
+            margin-left: calc(-50vw + 50%) !important;
+          }
+          .pin-image-inner {
+            position: relative !important;
+            border-radius: 0 !important;
+          }
+          .pin-text-wrapper {
+            position: relative !important;
+            width: 100% !important;
+            height: auto !important;
+            margin-top: 3rem !important;
+          }
+          .pin-text-spacer {
+            padding: 0 !important;
+          }
+          .pin-text-content {
+            padding: 0 !important;
+            margin-right: 0 !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
           }
           .stats-grid {
             grid-template-columns: 1fr 1fr !important;
