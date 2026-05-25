@@ -7,7 +7,10 @@ import {
   Sparkles, 
   Clock,
   Building,
-  Trash2
+  Trash2,
+  Mail,
+  Phone,
+  DollarSign
 } from 'lucide-react';
 import { Link, useOutletContext } from 'react-router-dom';
 
@@ -19,7 +22,7 @@ export default function Home() {
   const { openModal } = useOutletContext();
 
   const stats = [
-    { number: "₹1,00,000", label: "Cash Prize Pool", desc: "For top sustainable breakthroughs" },
+    { number: "₹2,00,00 *", label: "Cash Prize Pool", desc: "For top sustainable breakthroughs" },
     { number: "3 Tracks", label: "Specialized Pillars", desc: "Circular waste, smart cities & Net Zero AI" },
     { number: "30+ Prototypes", label: "Incubations", desc: "Scaling lab projects into startups" },
     { number: "250+", label: "Youth Leaders", desc: "Joining from nationwide universities" }
@@ -33,7 +36,7 @@ export default function Home() {
   ];
 
   const dates = [
-    { date: "May 30, 2026", event: "Last Date of Registration", status: "Closing soon", color: "#ef4444" },
+    { date: "July 30, 2026", event: "Last Date of Registration", status: "Closing soon", color: "#ef4444" },
     { date: "Aug 15, 2026", event: "Selected Teams Announcement", status: "Evaluation phase", color: "#eab308" },
     { date: "Sep 17 - 19, 2026", event: "National Grand Finale (3 Days)", status: "Sprint event", color: "var(--secondary)" }
   ];
@@ -116,7 +119,7 @@ export default function Home() {
                 color: '#ffffff',
                 boxShadow: '0 4px 12px rgba(6, 47, 33, 0.15)'
               }}>
-                AMITY INSTITUTE OF ENVIRONMENTAL SCIENCES
+                AMITY UNIVERSITY UTTAR PRADESH NOIDA
               </span>
             </motion.div>
 
@@ -245,7 +248,7 @@ export default function Home() {
                 <Award size={24} style={{ color: 'var(--secondary)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2', textAlign: 'left' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Awards</span>
-                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>₹ 1,00,000 Cash</strong>
+                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>₹ 2,00,000 *</strong>
                 </div>
               </div>
             </motion.div>
@@ -306,7 +309,7 @@ export default function Home() {
       </div>
 
       {/* ================= STATS SECTION ================= */}
-      <section style={{ padding: '3.5rem 0', background: 'var(--primary)', color: 'var(--bg-light)', position: 'relative', zIndex: 5 }}>
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} style={{ padding: '3.5rem 0', background: 'var(--primary)', color: 'var(--bg-light)', position: 'relative', zIndex: 5 }}>
         <div className="container">
           <div style={{
             display: 'grid',
@@ -331,10 +334,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ================= ABOUT VISION SECTION ================= */}
-      <section id="about" style={{ padding: '7rem 0', position: 'relative', background: '#ffffff', overflow: 'hidden' }}>
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="about" style={{ padding: '7rem 0', position: 'relative', background: '#ffffff', overflow: 'hidden' }}>
         
         <div className="container" style={{ maxWidth: '1240px', position: 'relative', zIndex: 10 }}>
           <div style={{
@@ -368,7 +371,7 @@ export default function Home() {
                 lineHeight: '1.6', 
                 margin: 0
               }}>
-                Organised by the prestigious <strong>Amity Institute of Environmental Sciences</strong>, the Greenovators Hackathon 2026 inspires young researchers and entrepreneurs to provide scalable prototypes for carbon pathways, urban logistics, and circular models.
+                Organised by the prestigious <strong>Amity University Uttar Pradesh Noida</strong>, the Greenovators Hackathon 2026 inspires young researchers and entrepreneurs to provide scalable prototypes for carbon pathways, urban logistics, and circular models.
               </p>
 
               <div style={{
@@ -409,10 +412,10 @@ export default function Home() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ================= HACKATHON THEMES SECTION ================= */}
-      <section id="themes" style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="themes" style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
           
           {/* Section Header */}
@@ -514,12 +517,12 @@ export default function Home() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
 
 
       {/* ================= TIMELINE SECTION ================= */}
-      <section id="timeline" className="grid-bg" style={{ padding: '6rem 0', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="timeline" className="grid-bg" style={{ padding: '6rem 0', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
           
           <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
@@ -543,10 +546,10 @@ export default function Home() {
           <Timeline />
 
         </div>
-      </section>
+      </motion.section>
 
       {/* ================= DATES & PRIZES SECTION ================= */}
-      <section id="prizes" style={{ padding: '7rem 0', background: '#ffffff' }}>
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="prizes" style={{ padding: '7rem 0', background: '#ffffff' }}>
         <div className="container">
           
           <div style={{
@@ -673,10 +676,84 @@ export default function Home() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
+
+      {/* ================= SPONSORSHIP SECTION ================= */}
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="sponsorship" style={{ padding: '6rem 0', background: 'var(--primary)', color: '#ffffff' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+            <span className="badge badge-outline" style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'var(--accent)', background: 'rgba(255,255,255,0.05)' }}>
+              Partner With Us
+            </span>
+            <h2 style={{ 
+              fontSize: '2.75rem', 
+              color: '#ffffff', 
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 900,
+              letterSpacing: '-0.03em',
+            }} className="section-heading">
+              Sponsorship & Collaboration
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '600px', fontSize: '0.95rem' }}>
+              Join hands with the nation's brightest minds. Support sustainable innovation and scale green technologies by becoming an official sponsor.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2rem',
+            alignItems: 'stretch'
+          }}>
+            {/* Why Sponsor Us */}
+            <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.15)', color: 'var(--accent)', display: 'grid', placeItems: 'center', marginBottom: '0.5rem' }}>
+                <DollarSign size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', fontFamily: 'var(--font-heading)' }}>Sponsorship Tiers</h3>
+              <ul style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: '1.6', listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <li><strong style={{ color: 'var(--accent)' }}>Title Sponsor:</strong> Exclusive branding and keynote slot.</li>
+                <li><strong style={{ color: 'var(--accent)' }}>Gold Sponsor:</strong> Mentorship roles and branding on marketing collateral.</li>
+                <li><strong style={{ color: 'var(--accent)' }}>Prize Sponsor:</strong> Fund specific track awards directly.</li>
+              </ul>
+              <div style={{ marginTop: 'auto', paddingTop: '1.5rem' }}>
+                <a href="mailto:rdhupper@amity.edu" className="btn-primary" style={{ padding: '0.75rem 2rem', backgroundColor: 'var(--accent)', color: 'var(--primary)', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', fontWeight: 700, borderRadius: '12px' }}>
+                  Contact Us Now <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Contact Details */}
+            <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', fontFamily: 'var(--font-heading)', marginBottom: '0.5rem' }}>Contact Us</h3>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: '1.5' }}>Reach out to our sponsorship team directly to discuss custom partnership packages.</p>
+              </div>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <Mail size={20} style={{ color: 'var(--accent)' }} />
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Email Address</span>
+                    <a href="mailto:rdhupper@amity.edu" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>rdhupper@amity.edu</a>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <Phone size={20} style={{ color: 'var(--accent)' }} />
+                  <div>
+                    <span style={{ display: 'block', fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Jashn Kulshrestha</span>
+                    <a href="tel:+919410893552" style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 600 }}>+91 9410893552</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* ================= INSTITUTIONAL PARTNERS ================= */}
-      <section style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
+      <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
           
           <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
@@ -730,7 +807,7 @@ export default function Home() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* Embedded CSS for marquee keyframes */}
       <style dangerouslySetInnerHTML={{__html: `

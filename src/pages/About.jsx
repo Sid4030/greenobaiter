@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Globe, Leaf, Users, Zap, BookOpen, GraduationCap } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -10,14 +15,115 @@ const fadeUp = {
   transition: { duration: 0.8, ease: "easeOut" }
 };
 
+const SplitText = ({ text }) => {
+  return text.split(" ").map((word, i) => (
+    <span key={i} className="reveal-word" style={{ opacity: 0.2, display: 'inline-block', marginRight: '0.25em' }}>
+      {word}
+    </span>
+  ));
+};
+
 export default function About() {
   const { openModal } = useOutletContext();
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 993px)", () => {
+      // Setup the timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "center center",
+          end: "+=300%", // Longer pin duration for word-by-word reveal
+          pin: true,
+          scrub: 1, // Smooth scrubbing
+        }
+      });
+
+      // Animate the image to shrink and align to the left
+      tl.to(".pin-image-inner", {
+        top: "25vh",
+        left: "5vw",
+        width: "45vw",
+        height: "50vh", // Rectangle showing 80-90% of image correctly
+        borderRadius: "28px",
+        ease: "power2.inOut"
+      }, 0);
+
+      // Animate the text to fade in and slide up
+      tl.fromTo(".pin-text-content", {
+        opacity: 0,
+        y: 100
+      }, {
+        opacity: 1,
+        y: 0,
+        ease: "power2.out",
+        duration: 0.5
+      }, 0.2); // slight delay so image starts shrinking first
+
+      // Animate the heading words springing up
+      tl.to(".heading-word", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+        duration: 0.6
+      }, 0.4);
+
+      // Animate the words to reveal sequentially as you scroll
+      tl.to(".reveal-word", {
+        opacity: 1,
+        color: "var(--primary)",
+        stagger: 0.1,
+        ease: "none",
+        duration: 2
+      }, 0.7); // Start after the text block has slid in
+    });
+
+    mm.add("(max-width: 992px)", () => {
+      // Mobile text reveal timeline
+      const mobileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".pin-text-wrapper",
+          start: "top 70%",
+          end: "+=150%", // Enough scroll distance to reveal text on mobile
+          scrub: 1,
+        }
+      });
+      
+      mobileTl.fromTo(".pin-text-content", {
+        opacity: 0,
+        y: 30
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.2
+      })
+      .to(".heading-word", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+        duration: 0.4
+      }, 0.1)
+      .to(".reveal-word", {
+        opacity: 1,
+        color: "var(--primary)",
+        stagger: 0.1,
+        ease: "none",
+        duration: 1
+      }, 0.3);
+    });
+
+  }, { scope: containerRef });
 
   const milestones = [
-    { number: "15+", label: "Research Patents", desc: "Eco-innovations filed by student cohorts" },
-    { number: "40+", label: "Academic Publications", desc: "Scientific studies in green technology journals" },
-    { number: "10+", label: "State Collaborations", desc: "Working with municipal agencies on urban recovery" },
-    { number: "1500+", label: "Global Alumni", desc: "Leading sustainability roles worldwide" }
+    { number: "Top 3%", label: "Global Universities", desc: "Consistently ranked by QS & THE rankings" },
+    { number: "1880+", label: "Patents Filed", desc: "Among the highest by an Indian academic institution" },
+    { number: "A+", label: "NAAC Grade", desc: "Awarded by National Assessment and Accreditation Council" },
+    { number: "LEED Platinum", label: "Green Campuses", desc: "Certified sustainable and energy-efficient infrastructure" }
   ];
 
   const pillars = [
@@ -91,83 +197,44 @@ export default function About() {
       </section>
 
       {/* ================= DETAILED BLOCKS ================= */}
-      <section className="container" style={{ marginBottom: '6rem' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.1fr 1fr',
-          gap: '5rem',
-          alignItems: 'center'
-        }} className="about-grid">
-          
-          <motion.div {...fadeUp} style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
-              Organizing Host
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
-              Amity Institute of Environmental Sciences
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              Amity Institute of Environmental Sciences (AIES) is a premier academic department of Amity University Uttar Pradesh, dedicated to developing technical environmental solutions. AIES conducts cutting-edge research in waste management, carbon capture, air pollution modeling, and ecological remediation.
-            </p>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
-              The national Greenovators Hackathon is our flagship platform. It challenges the brightest youth minds across India to refine their raw scientific concepts into tangible, deployable hardware and software prototypes.
-            </p>
-            <div style={{ marginTop: '0.5rem' }}>
+      <section ref={containerRef} className="pin-section">
+        
+        {/* Full width image wrapper initially */}
+        <div className="pin-image-wrapper">
+          <div className="pin-image-inner">
+            <img 
+              src="https://amity.edu/images/university.jpg" 
+              alt="Amity University Campus" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
+        </div>
+
+        {/* Text wrapper positioned on the right */}
+        <div className="pin-text-wrapper container">
+          <div className="pin-text-spacer">
+            <div className="pin-text-content">
+              <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
+                Organizing Host
+              </span>
+              <h2 className="amity-heading" style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.2, marginTop: '1.5rem', marginBottom: '1.5rem', overflow: 'hidden' }}>
+                {"Amity University Uttar Pradesh".split(" ").map((word, i) => (
+                  <span key={i} className="heading-word" style={{ display: 'inline-block', marginRight: '0.25em', opacity: 0, transform: 'translateY(40px)' }}>
+                    {word}
+                  </span>
+                ))}
+              </h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                <SplitText text="Amity University is a globally recognized institution committed to nation-building and societal progress through integrated, value-based, and transcultural education that harmonizes modernity with tradition. Established in 2005, Amity University Noida is a premier NAAC A+ graded private university located in the Delhi NCR region, renowned for its 60+ acre hi-tech campus and wide academic offerings." />
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                <SplitText text="With over 600 undergraduate, postgraduate, and doctoral programs across diverse and emerging disciplines, Amity promotes excellence in education, research, innovation, and professional development. The university emphasizes holistic growth by nurturing human values, cultural pride, leadership, and critical thinking. Through global exposure, extensive patent contributions, and international study pathways, Amity shapes students into skilled professionals, ethical individuals, and compassionate citizens dedicated to responsible leadership, societal advancement, and global development." />
+              </p>
               <button onClick={openModal} className="btn-primary" style={{ padding: '0.85rem 2rem', cursor: 'pointer' }}>
                 Join the Hackathon Proposal
               </button>
             </div>
-          </motion.div>
-
-          <motion.div 
-            {...fadeUp}
-            style={{
-              background: '#041710',
-              padding: 'clamp(1.5rem, 5vw, 3rem)',
-              borderRadius: '28px',
-              border: '1px solid rgba(255,255,255,0.06)',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
-            }}
-          >
-            {/* Fine grain dot grid background */}
-            <div style={{
-              position: 'absolute',
-              top: 0, left: 0, right: 0, bottom: 0,
-              backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0)',
-              backgroundSize: '24px 24px',
-              opacity: 0.8
-            }} />
-            
-            <div style={{ position: 'relative', zIndex: 1, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#bef264' }}>
-                <GraduationCap size={36} />
-                <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.35rem)', color: '#ffffff', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
-                  AIES Research Scope
-                </h3>
-              </div>
-              
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', padding: 0, margin: 0, listStyle: 'none' }}>
-                {[
-                  { title: "Circular Economy Science", desc: "Analyzing biochemical conversions of organic & municipal waste structures." },
-                  { title: "Resilient City Architectures", desc: "Modeling micro-climate impacts, public green spaces, and localized pollution levels." },
-                  { title: "Eco-Industrial Symbiosis", desc: "Designing closed-loop pipelines where output waste of one sector fuels another." },
-                  { title: "Climate Policy & Audits", desc: "Translating engineering specifications into carbon-credit models and policy reports." }
-                ].map((item, idx) => (
-                  <li key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <strong style={{ color: '#bef264', fontSize: '0.95rem', fontWeight: 700 }}>
-                      • {item.title}
-                    </strong>
-                    <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.85rem', paddingLeft: '1.1rem' }}>
-                      {item.desc}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-
+          </div>
         </div>
       </section>
 
@@ -263,10 +330,97 @@ export default function About() {
 
       {/* Responsive overrides */}
       <style dangerouslySetInnerHTML={{__html: `
+        .pin-section {
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          overflow: hidden;
+          background-color: transparent;
+          margin-left: calc(-50vw + 50%);
+          margin-bottom: 6rem;
+        }
+        .pin-image-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        .pin-image-inner {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 0px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+          transform-origin: center center;
+        }
+        .pin-text-wrapper {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .pin-text-spacer {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: auto;
+        }
+        .pin-text-content {
+          padding: 1rem 0;
+          max-width: 650px;
+          background: transparent;
+          margin-right: 2rem;
+        }
+
         @media (max-width: 992px) {
-          .about-grid {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+          .pin-section {
+            height: auto !important;
+            flex-direction: column !important;
+            overflow: visible !important;
+            margin-left: 0 !important;
+            width: 100% !important;
+          }
+          .pin-image-wrapper {
+            position: relative !important;
+            width: 100vw !important;
+            height: 40vh !important;
+            margin-left: calc(-50vw + 50%) !important;
+          }
+          .pin-image-inner {
+            position: relative !important;
+            border-radius: 0 !important;
+          }
+          .pin-text-wrapper {
+            position: relative !important;
+            width: 100% !important;
+            height: auto !important;
+            margin-top: 3rem !important;
+          }
+          .pin-text-spacer {
+            padding: 0 !important;
+          }
+          .pin-text-content {
+            padding: 0 !important;
+            margin-right: 0 !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
           }
           .stats-grid {
             grid-template-columns: 1fr 1fr !important;

@@ -5,38 +5,32 @@ import { Calendar, Users, Award, Briefcase, Zap, Compass, CheckCircle } from 'lu
 export default function Timeline() {
   const steps = [
     {
-      phase: "Phase 01",
-      title: "Call for Applications",
+      phase: "Phase 1",
+      title: "Call for Registrations",
       icon: <Users size={20} />,
       color: "var(--secondary)",
       items: [
-        "Online nationwide team registrations open.",
-        "National screening panel evaluates initial proposals.",
-        "Shortlisting based on innovation, feasibility, and sustainability impact."
+        "The journey begins with an open call for registrations, inviting passionate innovators, problem-solvers, and creative minds to join the hackathon and become part of a transformative experience."
       ],
       badge: "Active Phase"
     },
     {
-      phase: "Phase 02",
-      title: "3-Day Dynamic Sprint",
+      phase: "Phase 2",
+      title: "Event Begins",
       icon: <Zap size={20} />,
       color: "#0284c7",
       items: [
-        "Day 1: Technical orientation, problem briefs, and industry mentors mapping.",
-        "Day 2: Design sprint, rapid prototyping, and intensive laboratory feedback.",
-        "Day 3: Final pitches before a high-profile jury of policymakers and Venture Capitalists."
+        "The excitement unfolds with a dynamic 3-day, 30-hour hackathon where participants collaborate, innovate, and develop impactful solutions to real-world challenges."
       ],
       badge: "17th - 19th Sep 2026"
     },
     {
-      phase: "Phase 03",
-      title: "Seed Incubation & Launch",
+      phase: "Phase 3",
+      title: "Connect with Industry Experts",
       icon: <Briefcase size={20} />,
       color: "#8b5cf6",
       items: [
-        "Shortlisted teams enter the incubation phase with Amity Incubation Center.",
-        "Direct access to ₹ 1,00,000 cash prizes and pilot scale budgets.",
-        "Mentorship pipelines from UNEP, Ministry experts, and clean-tech leaders."
+        "Participants will gain valuable opportunities to interact with industry experts, mentors, and professionals, receiving guidance, networking opportunities, and insights that bridge innovation with practical industry experience and future possibilities."
       ],
       badge: "Post-Hackathon"
     }

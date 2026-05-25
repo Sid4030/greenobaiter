@@ -94,8 +94,8 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)' }} className="footer-links">
               <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
               <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About Us</Link>
-              <Link to="/problem-statement" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Problem Statement</Link>
-              <Link to="/contributors" style={{ color: 'inherit', textDecoration: 'none' }}>Contributors</Link>
+              <Link to="/problem-statement" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Themes</Link>
+              <Link to="/contributors" style={{ color: 'inherit', textDecoration: 'none' }}>Organizing Committee</Link>
               <Link to="/faqs" style={{ color: 'inherit', textDecoration: 'none' }}>FAQs</Link>
             </div>
           </div>
@@ -106,12 +106,13 @@ export default function Footer() {
               Organising Host
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.6)' }}>
-              <strong style={{ color: 'white' }}>Amity Institute of Environmental Sciences</strong>
-              <p>Amity University Uttar Pradesh, Sector-125, Noida, India.</p>
+              <strong style={{ color: 'white' }}>Amity University Uttar Pradesh Noida</strong>
+              <p>Sector-125, Amity University Uttar Pradesh</p>
               <div style={{ marginTop: '0.25rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                 <span>📧 Email: <a href="mailto:greenovators2026@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>greenovators2026@gmail.com</a></span>
                 <span>📞 Support: <a href="tel:9882314580" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>9882314580</a> / <a href="tel:9410893552" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>9410893552</a></span>
-                <span>🌐 Portal: amity.edu/aies</span>
+                <span>🌐 Portal: amity.edu</span>
+                <span>💼 Sponsorship & Collaboration: Jashn Kulshrestha (<a href="tel:+919410893552" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>+91 9410893552</a>) | <a href="mailto:rdhupper@amity.edu" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={(e) => e.target.style.color = 'var(--accent)'} onMouseOut={(e) => e.target.style.color = 'inherit'}>rdhupper@amity.edu</a></span>
               </div>
             </div>
           </div>
@@ -130,7 +131,7 @@ export default function Footer() {
           fontSize: '0.75rem',
           color: 'rgba(255, 255, 255, 0.4)',
         }} className="footer-bottom">
-          <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>© 2026 Amity Institute of Environmental Sciences. All rights reserved.</span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>© 2026 Amity University Uttar Pradesh Noida. All rights reserved.</span>
           <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
             <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Contact Us</Link>
             <a href="#" style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>Terms of Sprint</a>

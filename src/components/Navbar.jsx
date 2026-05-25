@@ -106,8 +106,8 @@ export default function Navbar({ onRegisterClick }) {
           <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <Link to="/" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Home</Link>
             <Link to="/about" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>About</Link>
-            <Link to="/problem-statement" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Problem Statement</Link>
-            <Link to="/contributors" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Contributors</Link>
+            <Link to="/problem-statement" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Themes</Link>
+            <Link to="/contributors" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Organizing Committee</Link>
             <Link to="/faqs" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>FAQs</Link>
             <Link to="/contact" className="nav-link" style={{ fontWeight: 600, fontSize: '0.95rem', color: themeColor, textDecoration: 'none' }}>Contact</Link>
           </div>
@@ -173,8 +173,8 @@ export default function Navbar({ onRegisterClick }) {
       >
         <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Home</Link>
         <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>About</Link>
-        <Link to="/problem-statement" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Problem Statement</Link>
-        <Link to="/contributors" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Contributors</Link>
+        <Link to="/problem-statement" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Themes</Link>
+        <Link to="/contributors" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Organizing Committee</Link>
         <Link to="/faqs" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>FAQs</Link>
         <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', textDecoration: 'none' }}>Contact</Link>
         <button 
