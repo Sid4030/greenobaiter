@@ -98,6 +98,7 @@ export default function Contributors() {
                 },
                 { name: "Devanshi Verma", role: "", dept: "", image: null },
                 { name: "Priyanshi Mishra", role: "", dept: "", image: null },
+                { name: "Kamakshi Bagga", role: "", dept: "", image: null },
             ],
         },
     ];
