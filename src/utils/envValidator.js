@@ -48,3 +48,19 @@ export function getRegistrationWebhookURL() {
     }
     return url;
 }
+
+export function getSupabaseUrl() {
+    const url = import.meta.env.VITE_SUPABASE_URL;
+    if (!url) {
+        console.error("❌ VITE_SUPABASE_URL not defined");
+    }
+    return url;
+}
+
+export function getSupabaseAnonKey() {
+    const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+    if (!key) {
+        console.error("❌ VITE_SUPABASE_ANON_KEY not defined");
+    }
+    return key;
+}
