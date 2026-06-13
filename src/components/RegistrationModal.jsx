@@ -15,6 +15,7 @@ import {
     Crown,
 } from "lucide-react";
 import { sendRegistrationToDiscord } from "../utils/discordWebhook";
+import { submitRegistrationToSupabase } from "../utils/registrationSupabase";
 
 // Simple file upload with Discord integration
 
@@ -128,7 +129,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
         setFormData({ ...formData, members: updatedMembers });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
@@ -145,47 +146,65 @@ export default function RegistrationModal({ isOpen, onClose }) {
         form.append("documentationLink", formData.documentationLink);
         form.append("documentationName", formData.documentationName);
 
-        fetch(WEB_APP_URL, {
-            method: "POST",
-            body: form,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.success) {
-                    // Send to Discord after successful submission
-                    sendRegistrationToDiscord({
-                        teamId: data.teamId,
-                        teamName: formData.teamName,
-                        track: formData.track,
-                        teamSize: formData.teamSize,
-                        members: formData.members,
-                        brief: formData.brief,
-                        documentationName: formData.documentationName,
-                        documentationLink: formData.documentationLink,
-                    });
-
-                    setIsSubmitting(false);
-                    setIsSubmitted(true);
-                } else {
-                    alert("Error: " + data.message);
-                    setIsSubmitting(false);
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("Submission failed. Please try again.");
-                setIsSubmitting(false);
+        try {
+            const response = await fetch(WEB_APP_URL, {
+                method: "POST",
+                body: form,
             });
+            const data = await response.json();
+
+            if (!data.success) {
+                alert("Error: " + data.message);
+                setIsSubmitting(false);
+                return;
+            }
+
+            const supabaseResult = await submitRegistrationToSupabase({
+                teamId: data.teamId,
+                teamName: formData.teamName,
+                track: formData.track,
+                teamSize: formData.teamSize,
+                members: formData.members,
+                brief: formData.brief,
+                documentationName: formData.documentationName,
+                documentationLink: formData.documentationLink,
+                declarationAccepted: formData.declarationAccepted,
+            });
+
+            if (!supabaseResult.success) {
+                alert("Supabase sync failed: " + supabaseResult.message);
+                setIsSubmitting(false);
+                return;
+            }
+
+            sendRegistrationToDiscord({
+                teamId: data.teamId,
+                teamName: formData.teamName,
+                track: formData.track,
+                teamSize: formData.teamSize,
+                members: formData.members,
+                brief: formData.brief,
+                documentationName: formData.documentationName,
+                documentationLink: formData.documentationLink,
+            });
+
+            setIsSubmitting(false);
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Submission failed. Please try again.");
+            setIsSubmitting(false);
+        }
     };
 
     // Handle file selection
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Check file size (max 5MB)
-            const maxSize = 5 * 1024 * 1024; // 5MB
+            // Check file size (max 10MB)
+            const maxSize = 10 * 1024 * 1024; // 10MB
             if (file.size > maxSize) {
-                alert("File size exceeds 5MB. Please choose a smaller file.");
+                alert("File size exceeds 10MB. Please choose a smaller file.");
                 return;
             }
 
@@ -1147,10 +1166,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
                                                 }}
                                             >
                                                 {isSubmitting ? (
-                                                    <span>
-                                                        Validating
-                                                        credentials...
-                                                    </span>
+                                                    <span>Submitting...</span>
                                                 ) : !formData.declarationAccepted ? (
                                                     <span>
                                                         Accept Declaration to
