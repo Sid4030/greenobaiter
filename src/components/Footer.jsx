@@ -78,7 +78,7 @@ export default function Footer() {
               Empowering the future generation of clean-technology innovators in waste streams, climate resilience, and smart logistics.
             </p>
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              {["#WasteToWealth", "#SmartInfrastructure", "#NetZeroAI"].map((tag, i) => (
+              {["#WasteToWealth", "#SmartInfrastructure", "#NetZeroAIArchitecture"].map((tag, i) => (
                 <span key={i} style={{ fontSize: '0.65rem', color: 'var(--accent)', background: 'rgba(255,255,255,0.06)', padding: '0.2rem 0.5rem', borderRadius: '100px', fontWeight: 600, whiteSpace: 'nowrap' }}>
                   {tag}
                 </span>

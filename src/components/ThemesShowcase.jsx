@@ -35,7 +35,7 @@ export default function ThemesShowcase() {
       sdgs: ["SDG 11", "SDG 7"]
     },
     {
-      title: "Net Zero AI",
+      title: "NetZeroAIArchitecture",
       tagline: "Artificial Intelligence & Carbon Optimization",
       icon: <Cpu size={22} />,
       borderColor: "rgba(139, 92, 246, 0.15)",

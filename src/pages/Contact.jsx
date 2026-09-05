@@ -16,10 +16,10 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
-    
+
     // Send to Discord
     sendContactToDiscord(formState);
-    
+
     setIsSubmitted(true);
     // Reset form after a brief delay
     setTimeout(() => {
@@ -42,13 +42,13 @@ export default function Contact() {
 
   return (
     <div style={{ background: '#fbfbfa', minHeight: '100vh', paddingTop: '140px', paddingBottom: '80px' }}>
-      
+
       {/* ================= HERO HEADER ================= */}
       <section className="container" style={{ textAlign: 'center', marginBottom: '5rem' }}>
         <span className="badge badge-outline" style={{ marginBottom: '1.25rem' }}>
           Contact Us
         </span>
-        
+
         <h1 style={{
           fontSize: 'clamp(1.85rem, 7.5vw, 3.75rem)',
           color: 'var(--primary)',
@@ -84,7 +84,7 @@ export default function Contact() {
           alignItems: 'start',
           textAlign: 'left'
         }} className="contact-grid">
-          
+
           {/* Left Form Column */}
           <div style={{
             background: '#ffffff',
@@ -138,8 +138,8 @@ export default function Contact() {
                 <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                   Your Name *
                 </label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
@@ -162,8 +162,8 @@ export default function Contact() {
                 <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                   Email Address *
                 </label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
@@ -186,8 +186,8 @@ export default function Contact() {
                 <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                   University / Institute Name
                 </label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="university"
                   value={formState.university}
                   onChange={handleChange}
@@ -209,7 +209,7 @@ export default function Contact() {
                 <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                   Preferred Innovation Track
                 </label>
-                <select 
+                <select
                   name="track"
                   value={formState.track}
                   onChange={handleChange}
@@ -234,7 +234,7 @@ export default function Contact() {
                 <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--primary)' }}>
                   Your Message *
                 </label>
-                <textarea 
+                <textarea
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
@@ -255,14 +255,14 @@ export default function Contact() {
                 />
               </div>
 
-              <button 
-                type="submit" 
-                className="btn-primary" 
-                style={{ 
-                  padding: '0.85rem 2rem', 
-                  marginTop: '0.5rem', 
-                  justifyContent: 'center', 
-                  cursor: 'pointer' 
+              <button
+                type="submit"
+                className="btn-primary"
+                style={{
+                  padding: '0.85rem 2rem',
+                  marginTop: '0.5rem',
+                  justifyContent: 'center',
+                  cursor: 'pointer'
                 }}
               >
                 Send Message <Send size={16} />
@@ -272,7 +272,7 @@ export default function Contact() {
 
           {/* Right Info Column */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-            
+
             {/* Host info */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <span className="badge badge-outline" style={{ alignSelf: 'flex-start' }}>
@@ -290,7 +290,7 @@ export default function Contact() {
 
             {/* Direct Channels */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              
+
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                 <div style={{
                   width: '42px',
@@ -345,14 +345,14 @@ export default function Contact() {
                 </div>
               </div>
 
-              
+
 
             </div>
 
             <div style={{ height: '1px', background: 'rgba(11, 61, 43, 0.08)' }} />
 
             {/* Strategic Campus Map details */}
-            <div style={{
+            {/* <div style={{
               background: 'rgba(11, 61, 43, 0.02)',
               border: '1px solid rgba(11, 61, 43, 0.06)',
               padding: '1.5rem',
@@ -370,7 +370,7 @@ export default function Contact() {
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.5', margin: 0 }}>
                 Grand Finale presentations are conducted inside the Department of Climate Change and Environmental Sustainability Block I-2 Seminar Hall. Located 20 minutes from the Okhla Bird Sanctuary Metro Station (Delhi Metro Magenta Line).
               </p>
-            </div>
+            </div> */}
 
           </div>
 
@@ -378,7 +378,8 @@ export default function Contact() {
       </section>
 
       {/* Styled inputs focus states and responsive grid */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .contact-field:focus {
           border-color: var(--secondary) !important;
           background: #ffffff !important;

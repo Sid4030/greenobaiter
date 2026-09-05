@@ -41,7 +41,7 @@ export default function GreenovatorCircle() {
       metricDesc: "Energy Efficiency Optimization"
     },
     {
-      title: "Net Zero AI",
+      title: "NetZeroAIArchitecture",
       icon: <Cpu size={24} />,
       color: "#8b5cf6", // Violet
       accentBg: "rgba(139, 92, 246, 0.05)",

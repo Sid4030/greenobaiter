@@ -41,7 +41,7 @@ export default function ProblemStatement() {
       deliverable: "Functional hardware micro-controller circuit, sensor array dataset, and graphical dashboard mockup."
     },
     {
-      title: "Net Zero AI Architectures",
+      title: "NetZeroAIArchitecture",
       icon: <BrainCircuit size={28} />,
       color: "#8b5cf6",
       tagline: "Track 3: Climate Informatics",

@@ -23,7 +23,7 @@ export default function Home() {
 
   const stats = [
     { number: "₹1,50,000 *", label: "Cash Prize Pool", desc: "For top sustainable breakthroughs" },
-    { number: "3 Tracks", label: "Specialized Pillars", desc: "Circular waste, smart cities & Net Zero AI" },
+    { number: "3 Tracks", label: "Specialized Pillars", desc: "Circular waste, smart cities & NetZeroAIArchitecture" },
     { number: "30+ Prototypes", label: "Incubations", desc: "Scaling lab projects into startups" },
     { number: "250+", label: "Youth Leaders", desc: "Joining from nationwide universities" }
   ];
@@ -564,7 +564,7 @@ export default function Home() {
               <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: 'rgba(139, 92, 246, 0.1)', color: '#8b5cf6', display: 'grid', placeItems: 'center', marginBottom: '1rem' }}>
                 <Sparkles size={24} />
               </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-heading)' }}>Net Zero AI</h3>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--primary)', fontFamily: 'var(--font-heading)' }}>NetZeroAIArchitecture</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>Harnessing predictive neural systems, sensors, and modeling to absolute-zero emissions.</p>
               <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid rgba(11, 61, 43, 0.05)' }}>
                 <strong style={{ display: 'block', fontSize: '1.5rem', color: '#8b5cf6' }}>Zero</strong>

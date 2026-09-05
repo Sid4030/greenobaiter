@@ -48,14 +48,14 @@ export default function Contributors() {
             title: "Conveners",
             members: [
                 {
-                    name: "Dr. Rachana Singh",
+                    name: "Prof. (Dr) Rachana Singh",
                     role: "HOI, Amity Institute of Environmental Sciences",
-                    dept: "Department of Climate Change and Environmental Sustainability, Amity University Uttar Pradesh Noida",
+                    dept: "Amity University Uttar Pradesh Noida",
                     image: null,
                 },
                 {
                     name: "Prof. (Dr.) Renu Dhupper",
-                    role: "Assistant Director",
+                    role: "HOD",
                     dept: "Department of Climate Change and Environmental Sustainability, Amity University Uttar Pradesh Noida",
                     image: null,
                 },
