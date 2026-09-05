@@ -23,7 +23,7 @@ export default function Contributors() {
             ],
         },
         {
-            title: "Patrons",
+            title: "Patron",
             members: [
                 {
                     name: "Dr. Atul Chauhan",
@@ -31,33 +31,15 @@ export default function Contributors() {
                     dept: "Amity University",
                     image: null,
                 },
-                {
-                    name: "Prof. (Dr.) Balvinder Shukla",
-                    role: "Vice Chancellor",
-                    dept: "Amity University Uttar Pradesh",
-                    image: null,
-                },
             ],
         },
         {
-            title: "Co-Patrons",
+            title: "Co-Patron",
             members: [
                 {
-                    name: "Prof. (Dr.) Sanjeev Bansal",
-                    role: "Additional Pro Vice-Chancellor, Dean FMS & Director ABS",
-                    dept: "Amity University Uttar Pradesh, Noida",
-                    image: null,
-                },
-                {
-                    name: "Prof. (Dr.) Chanderdeep Tandon",
-                    role: "Additional Pro Vice Chancellor & Dean Faculty of Bio Sciences & Biotechnology",
-                    dept: "Amity University Uttar Pradesh, Noida",
-                    image: null,
-                },
-                {
-                    name: "Prof. (Dr.) D. K. Bandyopadhyay",
-                    role: "Chief Advisor to the Founder President & Chairman of Law Schools",
-                    dept: "Amity University Uttar Pradesh, Noida",
+                    name: "Vice Chancellor",
+                    role: "Vice Chancellor",
+                    dept: "Amity University Uttar Pradesh",
                     image: null,
                 },
             ],
@@ -66,21 +48,15 @@ export default function Contributors() {
             title: "Conveners",
             members: [
                 {
+                    name: "Dr. Rachana Singh",
+                    role: "HOI, Amity Institute of Environmental Sciences",
+                    dept: "Department of Climate Change and Environmental Sustainability, Amity University Uttar Pradesh Noida",
+                    image: null,
+                },
+                {
                     name: "Prof. (Dr.) Renu Dhupper",
                     role: "Assistant Director",
-                    dept: "Amity Institute of Environmental Sciences, Amity University Uttar Pradesh Noida",
-                    image: null,
-                },
-                {
-                    name: "Prof. (Dr.) Rachana Singh",
-                    role: "Professor",
-                    dept: "Amity Institute of Biotechnology, Amity University Uttar Pradesh, Noida",
-                    image: null,
-                },
-                {
-                    name: "Dr. Garima Agarwal",
-                    role: "Associate Professor and Head",
-                    dept: "Amity Centre for Entrepreneurship Development, Amity University Uttar Pradesh, Noida",
+                    dept: "Department of Climate Change and Environmental Sustainability, Amity University Uttar Pradesh Noida",
                     image: null,
                 },
             ],
@@ -89,15 +65,11 @@ export default function Contributors() {
             title: "Student Organizing Committee",
             members: [
                 { name: "Jashn Kulshrestha", role: "", dept: "", image: null },
-                { name: "Ananya Padhy", role: "", dept: "", image: null },
-                {
-                    name: "Aditya Vikram Singh",
-                    role: "",
-                    dept: "",
-                    image: null,
-                },
                 { name: "Devanshi Verma", role: "", dept: "", image: null },
+                { name: "Bhawna Chauhan", role: "", dept: "", image: null },
                 { name: "Priyanshi Mishra", role: "", dept: "", image: null },
+                { name: "Ananya Padhy", role: "", dept: "", image: null },
+                { name: "Ambika Singh", role: "", dept: "", image: null },
                 { name: "Kamakshi Bagga", role: "", dept: "", image: null },
             ],
         },

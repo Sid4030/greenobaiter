@@ -22,7 +22,7 @@ export default function Home() {
   const { openModal } = useOutletContext();
 
   const stats = [
-    { number: "₹2,00,00 *", label: "Cash Prize Pool", desc: "For top sustainable breakthroughs" },
+    { number: "₹1,50,000 *", label: "Cash Prize Pool", desc: "For top sustainable breakthroughs" },
     { number: "3 Tracks", label: "Specialized Pillars", desc: "Circular waste, smart cities & Net Zero AI" },
     { number: "30+ Prototypes", label: "Incubations", desc: "Scaling lab projects into startups" },
     { number: "250+", label: "Youth Leaders", desc: "Joining from nationwide universities" }
@@ -38,7 +38,7 @@ export default function Home() {
   const dates = [
     { date: "July 30, 2026", event: "Last Date of Registration", status: "Closing soon", color: "#ef4444" },
     { date: "Aug 15, 2026", event: "Selected Teams Announcement", status: "Evaluation phase", color: "#eab308" },
-    { date: "Sep 17 - 19, 2026", event: "National Grand Finale (3 Days)", status: "Sprint event", color: "var(--secondary)" }
+    { date: "Oct 7 - 9, 2026", event: "National Grand Finale (3 Days)", status: "Sprint event", color: "var(--secondary)" }
   ];
 
   return (
@@ -238,7 +238,7 @@ export default function Home() {
                 <Calendar size={24} style={{ color: 'var(--secondary)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2', textAlign: 'left' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Event Dates</span>
-                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>17–19 Sept 2026</strong>
+                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>7–9 Oct 2026</strong>
                 </div>
               </div>
 
@@ -248,7 +248,7 @@ export default function Home() {
                 <Award size={24} style={{ color: 'var(--secondary)' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2', textAlign: 'left' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Total Awards</span>
-                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>₹ 2,00,000 *</strong>
+                  <strong style={{ fontSize: '1.05rem', color: 'var(--primary)' }}>₹ 1,50,000 *</strong>
                 </div>
               </div>
             </motion.div>
@@ -597,7 +597,7 @@ export default function Home() {
                 display: 'block',
                 marginBottom: '1.25rem'
               }}>
-                ₹ 2,00,000 *
+                ₹ 1,50,000 *
               </strong>
 
               <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.95rem', lineHeight: '1.5', marginBottom: '1.25rem' }}>

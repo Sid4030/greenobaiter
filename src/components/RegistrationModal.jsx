@@ -1234,7 +1234,7 @@ export default function RegistrationModal({ isOpen, onClose }) {
                                             Verification emails have been sent
                                             to all team members. Mark your
                                             calendar for{" "}
-                                            <strong>17th September 2026</strong>
+                                            <strong>7th October 2026</strong>
                                             .
                                         </p>
 

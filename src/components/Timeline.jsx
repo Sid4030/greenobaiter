@@ -22,7 +22,7 @@ export default function Timeline() {
       items: [
         "The excitement unfolds with a dynamic 3-day, 30-hour hackathon where participants collaborate, innovate, and develop impactful solutions to real-world challenges."
       ],
-      badge: "17th - 19th Sep 2026"
+      badge: "7th - 9th Oct 2026"
     },
     {
       phase: "Phase 3",

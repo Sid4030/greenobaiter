@@ -277,7 +277,7 @@ export default function ProblemStatement() {
               Intellectual Property Disclaimer
             </strong>
             <p style={{ fontSize: '0.85rem', color: '#7f1d1d', lineHeight: '1.5', margin: 0 }}>
-              All codebases, design blueprints, and biological formulas developed during the Greenovators Hackathon remain <strong>100% intellectual property (IP) of the respective participating teams</strong>. Neither AIES nor Amity University claims ownership of models built during the sprint. Intellectual property assistance and patent filings will be supported for selected incubated startups.
+              All codebases, design blueprints, and biological formulas developed during the Greenovators Hackathon remain <strong>100% intellectual property (IP) of the respective participating teams</strong>. Neither the Department of Climate Change and Environmental Sustainability nor Amity University claims ownership of models built during the sprint. Intellectual property assistance and patent filings will be supported for selected incubated startups.
             </p>
           </div>
         </motion.div>

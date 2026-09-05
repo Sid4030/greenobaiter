@@ -38,11 +38,6 @@ export default function About() {
             desc: "Among the highest by an Indian academic institution",
         },
         {
-            number: "A+",
-            label: "NAAC Grade",
-            desc: "Awarded by National Assessment and Accreditation Council",
-        },
-        {
             number: "LEED Platinum",
             label: "Green Campuses",
             desc: "Certified sustainable and energy-efficient infrastructure",
@@ -185,7 +180,7 @@ export default function About() {
                                     marginBottom: "1rem",
                                 }}
                             >
-                                <SplitText text="Amity University is a globally recognized institution committed to nation-building and societal progress through integrated, value-based, and transcultural education that harmonizes modernity with tradition. Established in 2005, Amity University Noida is a premier NAAC A+ graded private university located in the Delhi NCR region, renowned for its 60+ acre hi-tech campus and wide academic offerings." />
+                                <SplitText text="Amity University is a globally recognized institution committed to nation-building and societal progress through integrated, value-based, and transcultural education that harmonizes modernity with tradition. Established in 2005, Amity University Noida is a premier private university located in the Delhi NCR region, renowned for its 60+ acre hi-tech campus and wide academic offerings." />
                             </p>
                             <p
                                 style={{

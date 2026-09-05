@@ -127,7 +127,7 @@ export default function Contact() {
                     Message Sent Successfully!
                   </h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '320px', margin: 0 }}>
-                    Thank you. The coordinating secretary from AIES will review and respond to you within 24 hours.
+                    Thank you. The coordinating secretary from the Department of Climate Change and Environmental Sustainability will review and respond to you within 24 hours.
                   </p>
                 </motion.div>
               ) : null}
@@ -279,7 +279,7 @@ export default function Contact() {
                 Coordinating Host
               </span>
               <h3 style={{ fontSize: 'clamp(1.35rem, 5vw, 1.65rem)', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>
-                Amity Institute of Environmental Sciences
+                Department of Climate Change and Environmental Sustainability
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>
                 Amity University Uttar Pradesh, Sector-125, Noida, Uttar Pradesh, Pin - 201313, India.
@@ -368,7 +368,7 @@ export default function Contact() {
                 </strong>
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.5', margin: 0 }}>
-                Grand Finale presentations are conducted inside the AIES Block I-2 Seminar Hall. Located 20 minutes from the Okhla Bird Sanctuary Metro Station (Delhi Metro Magenta Line).
+                Grand Finale presentations are conducted inside the Department of Climate Change and Environmental Sustainability Block I-2 Seminar Hall. Located 20 minutes from the Okhla Bird Sanctuary Metro Station (Delhi Metro Magenta Line).
               </p>
             </div>
 
