@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Award, 
-  Calendar, 
-  ArrowRight, 
-  Sparkles, 
+import {
+  Award,
+  Calendar,
+  ArrowRight,
+  Sparkles,
   Clock,
   Building,
   Trash2,
@@ -36,14 +36,14 @@ export default function Home() {
   ];
 
   const dates = [
-    { date: "July 30, 2026", event: "Last Date of Registration", status: "Closing soon", color: "#ef4444" },
-    { date: "Aug 15, 2026", event: "Selected Teams Announcement", status: "Evaluation phase", color: "#eab308" },
+    { date: "Sep 25, 2026", event: "Last Date of Registration", status: "Closing soon", color: "#ef4444" },
+    { date: "Sep 30, 2026", event: "Selected Teams Announcement", status: "Evaluation phase", color: "#eab308" },
     { date: "Oct 7 - 9, 2026", event: "National Grand Finale (3 Days)", status: "Sprint event", color: "var(--secondary)" }
   ];
 
   return (
     <div style={{ background: '#fbfbfa', overflow: 'hidden' }}>
-      
+
       {/* ================= HERO SECTION (Clean Light Theme) ================= */}
       <section id="hero" className="grid-bg" style={{
         position: 'relative',
@@ -52,9 +52,10 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: '130px',
+        paddingBottom: '4rem',
         overflow: 'hidden'
       }}>
-        
+
         {/* Massive Background 3D Canvas */}
         <div style={{
           position: 'absolute',
@@ -104,16 +105,16 @@ export default function Home() {
             margin: '0 auto',
             pointerEvents: 'auto'
           }} className="hero-content-wrapper">
-            
+
             {/* Organized Badge */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-              <span className="badge" style={{ 
-                fontSize: '0.75rem', 
-                fontWeight: 800, 
+              <span className="badge" style={{
+                fontSize: '0.75rem',
+                fontWeight: 800,
                 padding: '0.5rem 1.2rem',
                 backgroundColor: 'var(--primary)',
                 color: '#ffffff',
@@ -125,7 +126,7 @@ export default function Home() {
 
             {/* Dynamic Typography */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-              
+
               {/* Line 1: WASTE TO WEALTH */}
               <div style={{ overflow: 'hidden' }}>
                 <motion.div
@@ -143,8 +144,8 @@ export default function Home() {
                   }}
                   className="hero-heading"
                 >
-                  RE-ENGINEERING<br/>
-                  CIRCULAR<br/>
+                  RE-ENGINEERING<br />
+                  CIRCULAR<br />
                   WASTE TO <span style={{ color: 'var(--secondary)' }}>WEALTH</span>
                 </motion.div>
               </div>
@@ -179,10 +180,10 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.25 }}
               style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1rem' }}
             >
-              <button 
-                onClick={openModal} 
-                className="btn-primary" 
-                style={{ 
+              <button
+                onClick={openModal}
+                className="btn-primary"
+                style={{
                   padding: '1rem 2.5rem',
                   backgroundColor: 'var(--secondary)',
                   color: '#ffffff',
@@ -194,11 +195,11 @@ export default function Home() {
               >
                 Register Team Proposal <ArrowRight size={20} />
               </button>
-              
-              <Link 
-                to="/problem-statement" 
-                className="btn-secondary" 
-                style={{ 
+
+              <Link
+                to="/problem-statement"
+                className="btn-secondary"
+                style={{
                   padding: '1rem 2.5rem',
                   borderColor: 'rgba(6, 47, 33, 0.15)',
                   color: 'var(--primary)',
@@ -336,9 +337,63 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* ================= OUR SPONSORS SECTION ================= */}
+      <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, ease: "easeOut" }} style={{
+        padding: '3.5rem 0',
+        background: '#ffffff',
+        borderTop: '1px solid rgba(11, 61, 43, 0.06)',
+        borderBottom: '1px solid rgba(11, 61, 43, 0.06)',
+      }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <span className="badge badge-outline" style={{ marginBottom: '1.25rem', fontSize: '0.75rem' }}>
+            Our Sponsors
+          </span>
+          <h3 style={{
+            fontSize: 'clamp(2rem, 5vw, 2.75rem)',
+            color: 'var(--primary)',
+            fontFamily: 'var(--font-heading)',
+            fontWeight: 900,
+            letterSpacing: '-0.03em',
+            marginBottom: '2.5rem',
+          }}>
+            Supported By
+          </h3>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '3rem',
+            flexWrap: 'wrap',
+          }}>
+            <div style={{
+              background: '#f8fdf8',
+              border: '1px solid rgba(11, 61, 43, 0.08)',
+              borderRadius: '20px',
+              padding: '2.5rem 3.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'default',
+            }} className="sponsor-card">
+              <img
+                src="/sponsors/bcclsponsor.jpeg"
+                alt="BCCL Sponsor"
+                style={{
+                  maxHeight: '140px',
+                  maxWidth: '360px',
+                  objectFit: 'contain',
+                  filter: 'none',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* ================= ABOUT VISION SECTION ================= */}
       <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="about" style={{ padding: '7rem 0', position: 'relative', background: '#ffffff', overflow: 'hidden' }}>
-        
+
         <div className="container" style={{ maxWidth: '1240px', position: 'relative', zIndex: 10 }}>
           <div style={{
             display: 'grid',
@@ -346,16 +401,16 @@ export default function Home() {
             gap: '4rem',
             alignItems: 'center'
           }} className="about-grid">
-            
+
             {/* Left Column: Text & Badges */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left', alignItems: 'flex-start' }}>
               <span className="badge badge-outline" style={{ fontSize: '0.75rem' }}>
                 National Sustainability Initiative
               </span>
 
-              <h2 style={{ 
-                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', 
-                color: 'var(--primary)', 
+              <h2 style={{
+                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
+                color: 'var(--primary)',
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 900,
                 letterSpacing: '-0.03em',
@@ -365,10 +420,10 @@ export default function Home() {
                 Aligning Technology with UN Sustainable Goals
               </h2>
 
-              <p style={{ 
-                fontSize: '1.1rem', 
-                color: 'var(--text-muted)', 
-                lineHeight: '1.6', 
+              <p style={{
+                fontSize: '1.1rem',
+                color: 'var(--text-muted)',
+                lineHeight: '1.6',
                 margin: 0
               }}>
                 Organised by the prestigious <strong>Amity University Uttar Pradesh Noida</strong>, the Greenovators Hackathon 2026 inspires young researchers and entrepreneurs to provide scalable prototypes for carbon pathways, urban logistics, and circular models.
@@ -417,10 +472,10 @@ export default function Home() {
       {/* ================= HACKATHON THEMES SECTION ================= */}
       <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="themes" style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
-          
+
           {/* Section Header */}
           <div style={{ position: 'relative', textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-            
+
             {/* 3D Model Clouds */}
             <div style={{ position: 'absolute', top: '-10px', left: '15%', opacity: 0.8, zIndex: 1, pointerEvents: 'none' }} className="cloud-container-1">
               <motion.div
@@ -452,9 +507,9 @@ export default function Home() {
             <span className="badge badge-outline" style={{ position: 'relative', zIndex: 2, background: 'rgba(255,255,255,0.8)' }}>
               Hackathon Themes
             </span>
-            <h2 style={{ 
-              fontSize: '2.75rem', 
-              color: 'var(--primary)', 
+            <h2 style={{
+              fontSize: '2.75rem',
+              color: 'var(--primary)',
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               letterSpacing: '-0.03em',
@@ -482,7 +537,7 @@ export default function Home() {
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Landfill Pressure Reduction</span>
               </div>
             </div>
-            
+
             {/* Card 2 */}
             <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', background: '#ffffff', border: '1px solid rgba(11, 61, 43, 0.05)', display: 'flex', flexDirection: 'column', gap: '1rem', boxShadow: '0 10px 40px rgba(0,0,0,0.02)' }}>
               <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: 'rgba(2, 132, 199, 0.1)', color: '#0284c7', display: 'grid', placeItems: 'center', marginBottom: '1rem' }}>
@@ -495,7 +550,7 @@ export default function Home() {
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Energy Efficiency</span>
               </div>
             </div>
-            
+
             {/* Card 3 */}
             <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', background: '#ffffff', border: '1px solid rgba(11, 61, 43, 0.05)', display: 'flex', flexDirection: 'column', gap: '1rem', boxShadow: '0 10px 40px rgba(0,0,0,0.02)' }}>
               <div style={{ width: '50px', height: '50px', borderRadius: '12px', background: 'rgba(139, 92, 246, 0.1)', color: '#8b5cf6', display: 'grid', placeItems: 'center', marginBottom: '1rem' }}>
@@ -524,14 +579,14 @@ export default function Home() {
       {/* ================= TIMELINE SECTION ================= */}
       <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="timeline" className="grid-bg" style={{ padding: '6rem 0', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
-          
+
           <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
             <span className="badge badge-outline">
               Hackathon Roadmap
             </span>
-            <h2 style={{ 
-              fontSize: '2.75rem', 
-              color: 'var(--primary)', 
+            <h2 style={{
+              fontSize: '2.75rem',
+              color: 'var(--primary)',
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               letterSpacing: '-0.03em',
@@ -551,17 +606,17 @@ export default function Home() {
       {/* ================= DATES & PRIZES SECTION ================= */}
       <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} id="prizes" style={{ padding: '7rem 0', background: '#ffffff' }}>
         <div className="container">
-          
+
           <div style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1.15fr',
             gap: '4rem',
             alignItems: 'center'
           }} className="dashboard-grid">
-            
+
             {/* Left Prize Panel */}
-            <div style={{ 
-              textAlign: 'left', 
+            <div style={{
+              textAlign: 'left',
               background: 'linear-gradient(135deg, #0b3d2b 0%, #071912 100%)',
               color: 'white',
               padding: '2.75rem',
@@ -570,7 +625,7 @@ export default function Home() {
               overflow: 'hidden',
               boxShadow: '0 12px 30px rgba(7, 25, 18, 0.06)'
             }} className="prize-panel">
-              
+
               <span className="badge" style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: 'var(--accent)', border: '1px solid rgba(255,255,255,0.12)', marginBottom: '1.25rem', fontSize: '0.65rem' }}>
                 EXCELLENCE AWARD
               </span>
@@ -685,9 +740,9 @@ export default function Home() {
             <span className="badge badge-outline" style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'var(--accent)', background: 'rgba(255,255,255,0.05)' }}>
               Partner With Us
             </span>
-            <h2 style={{ 
-              fontSize: '2.75rem', 
-              color: '#ffffff', 
+            <h2 style={{
+              fontSize: '2.75rem',
+              color: '#ffffff',
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               letterSpacing: '-0.03em',
@@ -729,7 +784,7 @@ export default function Home() {
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', fontFamily: 'var(--font-heading)', marginBottom: '0.5rem' }}>Contact Us</h3>
                 <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: '1.5' }}>Reach out to our sponsorship team directly to discuss custom partnership packages.</p>
               </div>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
                   <Mail size={20} style={{ color: 'var(--accent)' }} />
@@ -755,14 +810,14 @@ export default function Home() {
       {/* ================= INSTITUTIONAL PARTNERS ================= */}
       <motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, ease: "easeOut" }} style={{ padding: '6rem 0', background: 'var(--bg-light)', borderTop: '1px solid rgba(11, 61, 43, 0.05)', borderBottom: '1px solid rgba(11, 61, 43, 0.05)' }}>
         <div className="container">
-          
+
           <div style={{ textAlign: 'center', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
             <span className="badge badge-outline">
               National Network
             </span>
-            <h2 style={{ 
-              fontSize: '2.75rem', 
-              color: 'var(--primary)', 
+            <h2 style={{
+              fontSize: '2.75rem',
+              color: 'var(--primary)',
               fontFamily: 'var(--font-heading)',
               fontWeight: 900,
               letterSpacing: '-0.03em',
@@ -810,7 +865,8 @@ export default function Home() {
       </motion.section>
 
       {/* Embedded CSS for marquee keyframes */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes floatBg {
           0% {
             transform: translate3d(0, 0, 0) scale(1.06);
@@ -837,6 +893,11 @@ export default function Home() {
         @keyframes marquee {
           0% { transform: translate3d(0, 0, 0); }
           100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .sponsor-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.06);
         }
 
         @media (max-width: 992px) {

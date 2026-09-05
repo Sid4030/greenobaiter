@@ -26,7 +26,7 @@ export default function Layout() {
     return () => lenis.destroy();
   }, []);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => window.open('https://forms.gle/UV7Kmm9eKSzQ3G3P8', '_blank');
   const closeModal = () => setIsModalOpen(false);
 
   return (
