@@ -265,7 +265,7 @@ export default function Home() {
         padding: '1.25rem 0',
         overflow: 'hidden',
         position: 'relative',
-        zIndex: 4,
+        zIndex: 15,
         display: 'flex',
         whiteSpace: 'nowrap'
       }} className="tagline-marquee-strip">
