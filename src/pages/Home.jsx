@@ -52,7 +52,7 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: '130px',
-        paddingBottom: '4rem',
+        paddingBottom: '6rem',
         overflow: 'hidden'
       }}>
 
@@ -271,40 +271,48 @@ export default function Home() {
       }} className="tagline-marquee-strip">
         <div style={{
           display: 'inline-flex',
-          gap: '4rem',
+          gap: '3rem',
           animation: 'marquee 28s linear infinite',
-          willChange: 'transform'
+          willChange: 'transform',
+          paddingRight: '3rem'
         }} className="marquee-content">
-          {Array(4).fill("Innovate Green. Build Smart. Impact Tomorrow.").map((text, idx) => (
-            <span key={idx} style={{
-              fontSize: '1.15rem',
-              fontWeight: 800,
-              fontFamily: 'var(--font-heading)',
-              color: '#041710',
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase'
-            }}>
-              {text}
-            </span>
+          {Array(4).fill(null).map((_, idx) => (
+            <React.Fragment key={idx}>
+              <span style={{
+                fontSize: '1.15rem',
+                fontWeight: 800,
+                fontFamily: 'var(--font-heading)',
+                color: '#041710',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase'
+              }}>
+                Innovate Green. Build Smart. Impact Tomorrow.
+              </span>
+              <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--secondary)' }}>•</span>
+            </React.Fragment>
           ))}
         </div>
         <div style={{
           display: 'inline-flex',
-          gap: '4rem',
+          gap: '3rem',
           animation: 'marquee 28s linear infinite',
-          willChange: 'transform'
+          willChange: 'transform',
+          paddingRight: '3rem'
         }} className="marquee-content" aria-hidden="true">
-          {Array(4).fill("Innovate Green. Build Smart. Impact Tomorrow. •").map((text, idx) => (
-            <span key={idx} style={{
-              fontSize: '1.15rem',
-              fontWeight: 800,
-              fontFamily: 'var(--font-heading)',
-              color: '#041710',
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase'
-            }}>
-              {text}
-            </span>
+          {Array(4).fill(null).map((_, idx) => (
+            <React.Fragment key={idx}>
+              <span style={{
+                fontSize: '1.15rem',
+                fontWeight: 800,
+                fontFamily: 'var(--font-heading)',
+                color: '#041710',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase'
+              }}>
+                Innovate Green. Build Smart. Impact Tomorrow.
+              </span>
+              <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--secondary)' }}>•</span>
+            </React.Fragment>
           ))}
         </div>
       </div>
